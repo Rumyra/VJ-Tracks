@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2015">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <style type="text/css">
+    :root {
+      --level: 1;
+    }
+
+    body {margin:0px; padding:0px;}
+
+    #screen {
+      position: relative; padding:1vh;
+      width: 100vw; height: 100vh;
+      box-sizing: border-box;
+      background: black;
+    }
+    #screen section {
+      height:8vh; margin: 3vh;
+      background-color: mediumorchid;
+      background-image: linear-gradient(45deg, mediumorchid 9%, seagreen 9%, seagreen 16%, white 16%, white 34%, seagreen 34%, seagreen 41%, mediumorchid 41%, mediumorchid 59%, seagreen 59%, seagreen 66%, white 66%, white 84%, seagreen 84%, seagreen 91%, mediumorchid 91% );
+      background-size: 2vh 2vh;
+    }
+    #screen section:nth-of-type(2n) {
+      background-image: linear-gradient(135deg, indianred 9%, seagreen 9%, seagreen 16%, white 16%, white 34%, seagreen 34%, seagreen 41%, indianred 41%, indianred 59%, seagreen 59%, seagreen 66%, white 66%, white 84%, seagreen 84%, seagreen 91%, indianred 91% );
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="screen">
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+</div>
+
+</body>
+<script type="text/javascript">
+// set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioAPI = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+
+// variables
+var analyserNode,
+    frequencyData = new Uint8Array(256);
+const screen = document.querySelector('#screen'),
+    allRepeatedEls = document.querySelectorAll('#screen section'),
+    totalEls = allRepeatedEls.length;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioAPI.createAnalyser();
+  analyserNode.fftSize = 512;
+  audioSource.connect(analyserNode);
+}
+
+// get's html elements, loops over them & attaches a frequency from analysed data - what you do is up to you!
+function animateStuff() {
+  requestAnimationFrame(animateStuff);
+  analyserNode.getByteFrequencyData(frequencyData);
+  
+  for (let i=0; i<totalEls; i++) {
+
+    var freqVol = frequencyData[i*32]/2;
+    allRepeatedEls[i].style.width = freqVol+'vw';
+  }
+
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+var gotStream = function(stream) {
+  // Create an audio input from the stream.
+  var audioSource = audioAPI.createMediaStreamSource(stream);
+  createAnalyserNode(audioSource);
+  animateStuff();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+</script>
+
+</html>

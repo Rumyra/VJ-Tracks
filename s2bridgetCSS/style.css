@@ -1,0 +1,259 @@
+:root {
+  --level: 1;
+  --freq1: 1;
+  --freq2: 1;
+  --freq3: 1;
+  --freq4: 1;
+  --freq5: 1;
+  --freq6: 1;
+  --freq7: 1;
+  --freq8: 1;
+  --freq9: 1; }
+
+#ohTwo {
+  margin: 0px;
+  padding: 0px; }
+  #ohTwo #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+    #ohTwo #screen section {
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end; }
+      #ohTwo #screen section span {
+        display: block;
+        width: calc(10vw*var(--lowFreqOne));
+        height: 20vh;
+        border-radius: 7vw 7vw 0 0;
+        background-color: rgba(214, 92, 214, 0.7);
+        border: 2vw solid rgba(214, 92, 214, 0.9);
+        border-bottom-width: 0px; }
+        #ohTwo #screen section span:nth-of-type(1) {
+          display: block;
+          width: calc(10vw*var(--lowFreqOne));
+          height: calc(20vh*var(--lowFreqThree));
+          border-radius: calc(7vw*var(--lowFreqThree)) calc(7vw*var(--lowFreqOne)) 0 0;
+          background-color: hsla(calc(10*var(--lowFreqTwo)), 60%, 60%, 0.7);
+          border: 2vw solid rgba(214, 92, 214, 0.9);
+          border-bottom-width: 0px; }
+
+#ohThree {
+  margin: 0px;
+  padding: 0px; }
+  #ohThree #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+    #ohThree #screen section {
+      width: 50vw;
+      margin: 0px auto;
+      transform: translateY(50vh); }
+      #ohThree #screen section div:nth-of-type(0) {
+        transform: translateY(0vw) rotate(0deg); }
+        #ohThree #screen section div:nth-of-type(0) i {
+          animation: ohThreeLine 1s linear 0s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(1) {
+        transform: translateY(-4vw) rotate(30deg); }
+        #ohThree #screen section div:nth-of-type(1) i {
+          animation: ohThreeLine 1s linear 0.25s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(2) {
+        transform: translateY(-8vw) rotate(60deg); }
+        #ohThree #screen section div:nth-of-type(2) i {
+          animation: ohThreeLine 1s linear 0.5s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(3) {
+        transform: translateY(-12vw) rotate(90deg); }
+        #ohThree #screen section div:nth-of-type(3) i {
+          animation: ohThreeLine 1s linear 0.75s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(4) {
+        transform: translateY(-16vw) rotate(120deg); }
+        #ohThree #screen section div:nth-of-type(4) i {
+          animation: ohThreeLine 1s linear 1s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(5) {
+        transform: translateY(-20vw) rotate(150deg); }
+        #ohThree #screen section div:nth-of-type(5) i {
+          animation: ohThreeLine 1s linear 1.25s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(6) {
+        transform: translateY(-24vw) rotate(180deg); }
+        #ohThree #screen section div:nth-of-type(6) i {
+          animation: ohThreeLine 1s linear 1.5s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(7) {
+        transform: translateY(-28vw) rotate(210deg); }
+        #ohThree #screen section div:nth-of-type(7) i {
+          animation: ohThreeLine 1s linear 1.75s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(8) {
+        transform: translateY(-32vw) rotate(240deg); }
+        #ohThree #screen section div:nth-of-type(8) i {
+          animation: ohThreeLine 1s linear 2s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(9) {
+        transform: translateY(-36vw) rotate(270deg); }
+        #ohThree #screen section div:nth-of-type(9) i {
+          animation: ohThreeLine 1s linear 2.25s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(10) {
+        transform: translateY(-40vw) rotate(300deg); }
+        #ohThree #screen section div:nth-of-type(10) i {
+          animation: ohThreeLine 1s linear 2.5s alternate infinite; }
+      #ohThree #screen section div:nth-of-type(11) {
+        transform: translateY(-44vw) rotate(330deg); }
+        #ohThree #screen section div:nth-of-type(11) i {
+          animation: ohThreeLine 1s linear 2.75s alternate infinite; }
+      #ohThree #screen section i {
+        display: inline-block;
+        width: calc(4vw*var(--level));
+        height: calc(4vw*var(--level));
+        border-radius: 50%;
+        background-color: rgba(214, 92, 214, 0.7);
+        border: 1vw solid rgba(214, 92, 214, 0.8); }
+
+@keyframes ohThreeLine {
+  0% {
+    transform: translateX(0vw); }
+  100% {
+    transform: translateX(30vw); } }
+#ohFour {
+  margin: 0px;
+  padding: 0px; }
+  #ohFour #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+    #ohFour #screen section {
+      margin: 0px;
+      position: absolute;
+      top: 50%;
+      left: 50%; }
+      #ohFour #screen section i {
+        display: inline-block;
+        border-radius: 50%;
+        background-blend-mode: color; }
+      #ohFour #screen section:nth-of-type(1) {
+        width: 8vw;
+        margin-left: -4vw; }
+        #ohFour #screen section:nth-of-type(1) i {
+          width: calc(5vw*var(--freq1));
+          height: calc(5vw*var(--freq1));
+          background-color: rgba(214, 173, 92, 0.7);
+          border: 1px solid rgba(214, 173, 92, 0.9); }
+      #ohFour #screen section:nth-of-type(2) {
+        width: 16vw;
+        margin-left: -8vw; }
+        #ohFour #screen section:nth-of-type(2) i {
+          width: calc(10vw*var(--freq2));
+          height: calc(10vw*var(--freq2));
+          background-color: rgba(173, 214, 92, 0.7);
+          border: 1px solid rgba(173, 214, 92, 0.9); }
+      #ohFour #screen section:nth-of-type(3) {
+        width: 24vw;
+        margin-left: -12vw; }
+        #ohFour #screen section:nth-of-type(3) i {
+          width: calc(15vw*var(--freq3));
+          height: calc(15vw*var(--freq3));
+          background-color: rgba(92, 214, 92, 0.7);
+          border: 1px solid rgba(92, 214, 92, 0.9); }
+      #ohFour #screen section:nth-of-type(4) {
+        width: 32vw;
+        margin-left: -16vw; }
+        #ohFour #screen section:nth-of-type(4) i {
+          width: calc(20vw*var(--freq4));
+          height: calc(20vw*var(--freq4));
+          background-color: rgba(92, 214, 173, 0.7);
+          border: 1px solid rgba(92, 214, 173, 0.9); }
+      #ohFour #screen section:nth-of-type(5) {
+        width: 40vw;
+        margin-left: -20vw; }
+        #ohFour #screen section:nth-of-type(5) i {
+          width: calc(25vw*var(--freq5));
+          height: calc(25vw*var(--freq5));
+          background-color: rgba(92, 173, 214, 0.7);
+          border: 1px solid rgba(92, 173, 214, 0.9); }
+      #ohFour #screen section:nth-of-type(6) {
+        width: 48vw;
+        margin-left: -24vw; }
+        #ohFour #screen section:nth-of-type(6) i {
+          width: calc(30vw*var(--freq6));
+          height: calc(30vw*var(--freq6));
+          background-color: rgba(92, 92, 214, 0.7);
+          border: 1px solid rgba(92, 92, 214, 0.9); }
+      #ohFour #screen section:nth-of-type(7) {
+        width: 56vw;
+        margin-left: -28vw; }
+        #ohFour #screen section:nth-of-type(7) i {
+          width: calc(35vw*var(--freq7));
+          height: calc(35vw*var(--freq7));
+          background-color: rgba(173, 92, 214, 0.7);
+          border: 1px solid rgba(173, 92, 214, 0.9); }
+      #ohFour #screen section:nth-of-type(8) {
+        width: 64vw;
+        margin-left: -32vw; }
+        #ohFour #screen section:nth-of-type(8) i {
+          width: calc(40vw*var(--freq8));
+          height: calc(40vw*var(--freq8));
+          background-color: rgba(214, 92, 173, 0.7);
+          border: 1px solid rgba(214, 92, 173, 0.9); }
+      #ohFour #screen section:nth-of-type(9) {
+        width: 72vw;
+        margin-left: -36vw; }
+        #ohFour #screen section:nth-of-type(9) i {
+          width: calc(45vw*var(--freq9));
+          height: calc(45vw*var(--freq9));
+          background-color: rgba(214, 92, 92, 0.7);
+          border: 1px solid rgba(214, 92, 92, 0.9); }
+      #ohFour #screen section div {
+        height: 4vw; }
+        #ohFour #screen section div:nth-of-type(1) {
+          transform: translateY(-4vw) rotate(30deg); }
+        #ohFour #screen section div:nth-of-type(2) {
+          transform: translateY(-8vw) rotate(60deg); }
+        #ohFour #screen section div:nth-of-type(3) {
+          transform: translateY(-12vw) rotate(90deg); }
+        #ohFour #screen section div:nth-of-type(4) {
+          transform: translateY(-16vw) rotate(120deg); }
+        #ohFour #screen section div:nth-of-type(5) {
+          transform: translateY(-20vw) rotate(150deg); }
+        #ohFour #screen section div:nth-of-type(6) {
+          transform: translateY(-24vw) rotate(180deg); }
+        #ohFour #screen section div:nth-of-type(7) {
+          transform: translateY(-28vw) rotate(210deg); }
+        #ohFour #screen section div:nth-of-type(8) {
+          transform: translateY(-32vw) rotate(240deg); }
+        #ohFour #screen section div:nth-of-type(9) {
+          transform: translateY(-36vw) rotate(270deg); }
+        #ohFour #screen section div:nth-of-type(10) {
+          transform: translateY(-40vw) rotate(300deg); }
+        #ohFour #screen section div:nth-of-type(11) {
+          transform: translateY(-44vw) rotate(330deg); }
+        #ohFour #screen section div:nth-of-type(12) {
+          transform: translateY(-48vw) rotate(360deg); }
+
+#ohFour #screen section:nth-of-type(1) {
+  mix-blend-mode: screen; }
+
+#ohFour #screen section:nth-of-type(2) {
+  mix-blend-mode: luminosity; }
+
+#ohFour #screen section:nth-of-type(3) {
+  mix-blend-mode: difference; }
+
+#ohFour #screen section:nth-of-type(4) {
+  mix-blend-mode: color-burn; }
+
+#ohFour #screen section:nth-of-type(5) {
+  mix-blend-mode: hard-light; }
+
+#ohFour #screen section:nth-of-type(6) {
+  mix-blend-mode: difference; }
+
+#ohFour #screen section:nth-of-type(7) {
+  mix-blend-mode: hue; }
+
+#ohFour #screen section:nth-of-type(8) {
+  mix-blend-mode: hard-light; }
+
+#ohFour #screen section:nth-of-type(9) {
+  mix-blend-mode: luminosity; }
+
+/*# sourceMappingURL=style.css.map */

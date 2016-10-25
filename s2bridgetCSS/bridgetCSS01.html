@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2015">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <style type="text/css">
+    :root {
+      --purple: hsla(294, 24%, 61%, 1);
+      --pink: hsla(351, 52%, 55%, 1);
+      --orange: hsla(12, 54%, 57%, 1);
+      --yellow: hsla(48, 52%, 65%, 1);
+      --green: hsla(92, 31%, 54%, 1);
+      --turq: hsla(182, 35%, 41%, 1);
+      --lightBlue: hsla(199, 50%, 57%, 1);
+      --blue: hsla(225, 41%, 49%, 1);
+      --white: hsla(0, 0%, 95%, 1);
+      --black: hsla(0, 0%, 20%, 1);
+    }
+
+    body {margin:0px; padding:0px;}
+
+    #screen {
+      position: relative;
+      width: 100vw; height: 100vh;
+      background: black;
+      display: flex;
+      align-items: stretch;
+    }
+    #screen section {
+      background-image: linear-gradient(135deg, var(--purple) 5%, var(--lightBlue) 5%, var(--lightBlue) 10%, var(--yellow) 10%, var(--yellow) 15%, var(--lightBlue) 15%, var(--lightBlue) 20%, var(--yellow) 20%, var(--yellow) 25%, var(--lightBlue) 25%, var(--lightBlue) 40%, var(--blue) 40%, var(--blue) 70%, var(--purple) 70%, var(--purple) 95%, var(--lightBlue) 95%);
+      flex:1;
+    }
+    #screen section:nth-of-type(2) {
+      background-image: linear-gradient(135deg, var(--turq) 5%, var(--orange) 5%, var(--orange) 20%, var(--green) 20%, var(--green) 25%, var(--lightBlue) 25%, var(--lightBlue) 30%, var(--green) 30%, var(--green) 35%, var(--lightBlue) 35%, var(--lightBlue) 40%, var(--green) 40%, var(--green) 45%, var(--blue) 45%, var(--blue) 50%, var(--green) 50%, var(--green) 55%, var(--blue) 55%, var(--blue) 70%, var(--turq) 70%, var(--turq) 95%, var(--orange) 95%);
+    }
+    #screen section:nth-of-type(3) {
+      background-image: linear-gradient(135deg, var(--black) 5%, var(--white) 5%, var(--white) 10%, var(--black) 10%, var(--black) 15%, var(--white) 15%, var(--white) 20%, var(--black) 20%, var(--black) 25%, var(--yellow) 25%, var(--yellow) 50%, var(--lightBlue) 50%, var(--lightBlue) 75%, var(--white) 75%, var(--white) 80%, var(--black) 80%, var(--black) 85%, var(--white) 85%, var(--white) 90%, var(--black) 90%, var(--black) 95%, var(--white) 95%);
+    }
+    #screen section:nth-of-type(4) {
+      background-image: linear-gradient(135deg, var(--pink) 5%, var(--blue) 5%, var(--blue) 10%, var(--pink) 10%, var(--pink) 15%, var(--white) 15%, var(--white) 20%, var(--pink) 20%, var(--pink) 25%, var(--white) 25%, var(--white) 30%, var(--pink) 30%, var(--pink) 35%, var(--white) 35%, var(--white) 40%,  var(--lightBlue) 40%, var(--lightBlue) 70%, var(--pink) 70%, var(--pink) 75%, var(--blue) 75%, var(--blue) 80%, var(--pink) 80%, var(--pink) 85%, var(--blue) 85%, var(--blue) 90%, var(--pink) 90%, var(--pink) 95%, var(--blue) 95%);
+    }
+    #screen section:nth-of-type(5) {
+      background-image: linear-gradient(135deg, var(--orange) 5%, var(--black) 5%, var(--black) 15%, var(--white) 15%, var(--white) 20%, var(--black) 20%, var(--black) 25%, var(--white) 25%, var(--white) 30%, var(--black) 30%, var(--black) 35%, var(--white) 35%, var(--white) 40%, var(--black) 40%, var(--black) 45%, var(--yellow) 45%, var(--yellow) 50%, var(--lightBlue) 50%, var(--lightBlue) 55%, var(--yellow) 55%, var(--yellow) 60%, var(--lightBlue) 60%, var(--lightBlue) 65%, var(--yellow) 65%, var(--yellow) 70%, var(--lightBlue) 70%, var(--lightBlue) 75%, var(--orange) 75%, var(--orange) 95%, var(--black) 95%);
+    }
+    #screen section:nth-of-type(5) {
+      background-image: linear-gradient(135deg, var(--orange) 5%, var(--black) 5%, var(--black) 15%, var(--white) 15%, var(--white) 20%, var(--black) 20%, var(--black) 25%, var(--white) 25%, var(--white) 30%, var(--black) 30%, var(--black) 35%, var(--white) 35%, var(--white) 40%, var(--black) 40%, var(--black) 45%, var(--yellow) 45%, var(--yellow) 50%, var(--lightBlue) 50%, var(--lightBlue) 55%, var(--yellow) 55%, var(--yellow) 60%, var(--lightBlue) 60%, var(--lightBlue) 65%, var(--yellow) 65%, var(--yellow) 70%, var(--lightBlue) 70%, var(--lightBlue) 75%, var(--orange) 75%, var(--orange) 95%, var(--black) 95%);
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="screen">
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+  <section></section>
+</div>
+
+</body>
+<script type="text/javascript">
+// set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioAPI = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+
+// variables
+var analyserNode,
+    frequencyData = new Uint8Array(256);
+const screen = document.querySelector('#screen'),
+    allRepeatedEls = document.querySelectorAll('#screen section'),
+    totalEls = allRepeatedEls.length;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioAPI.createAnalyser();
+  analyserNode.fftSize = 512;
+  audioSource.connect(analyserNode);
+}
+
+// get's html elements, loops over them & attaches a frequency from analysed data - what you do is up to you!
+function animateStuff() {
+  requestAnimationFrame(animateStuff);
+  analyserNode.getByteFrequencyData(frequencyData);
+  
+  for (let i=0; i<totalEls; i++) {
+
+    var freqVol = frequencyData[i*16];
+    allRepeatedEls[i].style.backgroundPosition = '0 '+freqVol+'px';
+  }
+
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+var gotStream = function(stream) {
+  // Create an audio input from the stream.
+  var audioSource = audioAPI.createMediaStreamSource(stream);
+  createAnalyserNode(audioSource);
+  animateStuff();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+</script>
+
+</html>

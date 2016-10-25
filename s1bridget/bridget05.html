@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2015">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <style type="text/css">
+    :root {
+      --level: 1;
+    }
+
+    body {margin:0px; padding:0px;}
+
+    #screen {
+      position: relative;
+      width: 100vw; height: 100vh;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #screen div {
+      height:9vw; width:9vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #screen b {
+      display: inline-block;
+      height:3vw; width:3vw;
+      background-color: black;
+      border-radius: 50%;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="screen">
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  <div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div><div><b></b></div>
+  
+</div>
+
+</body>
+<script type="text/javascript">
+// set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioAPI = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+
+// variables
+var analyserNode,
+    frequencyData = new Uint8Array(256);
+const screen = document.querySelector('#screen'),
+    allRepeatedEls = document.querySelectorAll('#screen b'),
+    totalEls = allRepeatedEls.length;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioAPI.createAnalyser();
+  analyserNode.fftSize = 512;
+  audioSource.connect(analyserNode);
+}
+
+// get's html elements, loops over them & attaches a frequency from analysed data - what you do is up to you!
+function animateStuff() {
+  requestAnimationFrame(animateStuff);
+  analyserNode.getByteFrequencyData(frequencyData);
+  
+  for (let i=0; i<totalEls; i++) {
+
+    var freqVol = frequencyData[i*3]/70;
+    allRepeatedEls[i].style.width = freqVol+'vw';
+    allRepeatedEls[i].style.height = freqVol+'vw';
+  }
+
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+var gotStream = function(stream) {
+  // Create an audio input from the stream.
+  var audioSource = audioAPI.createMediaStreamSource(stream);
+  createAnalyserNode(audioSource);
+  animateStuff();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+</script>
+
+</html>

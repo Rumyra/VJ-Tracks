@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2015">
+  <title>MIDI Demos | Rumyra</title>
+  <meta name="description" content="">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <style type="text/css">
+    :root {
+      --level: 1;
+    }
+
+    body {margin:0px; padding:0px;}
+
+    #screen {
+      position: relative;
+      width: 100vw; height: 100vh;
+      background: black;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #screen i {
+      display: block; width: 10vw; height: 10vh;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<div id="screen">
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+</div>
+
+</body>
+<script type="text/javascript">
+  // set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioApi = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+// set up getUserMedia
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+// variables
+var audioBuffer,
+    analyserNode,
+    frequencyData = new Uint8Array(1024),
+    screen = document.getElementById('screen'),
+    allRepeatedEls = document.getElementsByTagName('i'),
+    totalEls = allRepeatedEls.length;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioApi.createAnalyser();
+  analyserNode.fftSize = 2048;
+  audioSource.connect(analyserNode);
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+function gotStream(stream) {
+    // Create an audio input from the stream.
+    var audioSource = audioApi.createMediaStreamSource(stream);
+    createAnalyserNode(audioSource);
+    animateStuff();
+}
+
+// pipe in analysing to getUserMedia
+navigator.getUserMedia(
+  {audio:true},
+  gotStream,
+  function(err) {
+    console.log("The following error occured: " + err);
+  } 
+);
+
+// we're going to animate stuff with d3
+// first let's look at selects...
+
+// select all i elements and add a style
+d3.selectAll('i').style("background","blue");
+// or select one
+d3.select('i:last-child').style("background","green");
+// use any selectors you would in css
+
+// we can pass in a function
+d3.selectAll('i').style("border", function() {
+  return "5px solid hsl(" + Math.random() * 360 + ",100%,50%)";
+})
+
+// data is passed in as an array
+// the default way of passing it in is 'join-by-index'
+// so the first el gets the first bit of data, 2nd 2nd and so on
+d3.selectAll('i')
+  .data([1,2,3,4,5,6,7,8,9])
+    .style("border-width", function(d) {return d+"px"});
+// you can do function(d,i) to pass in data and index
+
+//once you've done .data once, it's persisted so you don't need to use it again to access it
+d3.selectAll('i').style("border-radius", function(d) {return d*2+"px"});
+
+
+// enter & exit
+
+// transitions
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</html>
