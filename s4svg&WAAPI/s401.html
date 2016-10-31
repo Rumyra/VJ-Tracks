@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<audio src="https://github.com/Rumyra/MIDI-demos/blob/master/public/Guilt.mp3?raw=true" autoplay controls crossorigin="anonymous"></audio>
+
+<div id="screen">
+  <svg>
+    <g class="flower" width="280px" height="330px">
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M154.954,113.339c3.592-13.984,7.178-27.971,10.788-41.949c0.246-0.947,0.411-2.336,1.063-2.691
+      c7.782-4.234,15.118-9.79,24.974-7.532c12.745,2.919,21.12,14.187,20.089,26.687c-0.378,4.571-1.04,8.162-4.486,11.536
+      c-9.414,9.216-18.454,18.812-27.643,28.259"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M126.646,112.414c-3.87-13.864-7.745-27.729-11.596-41.596c-0.26-0.94-0.811-2.222-0.424-2.854
+      c4.609-7.535,8.173-15.988,17.807-18.952c12.46-3.833,25.308,1.721,30.647,13.027c1.953,4.135,3.171,7.565,1.878,12.197
+      c-3.534,12.649-6.557,25.44-9.779,38.176"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M101.03,126.821c-10.612-10.394-21.23-20.784-31.826-31.19c-0.718-0.707-1.87-1.568-1.851-2.332
+      c0.232-9.113-0.945-18.506,6.135-26.125c9.158-9.854,23.505-11.52,34.11-4.17c3.879,2.688,6.737,5.125,7.972,9.93
+      c3.369,13.128,7.268,26.119,10.957,39.163"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M87.099,153.587c-14.387-3.695-28.778-7.385-43.157-11.098c-0.976-0.253-2.404-0.423-2.769-1.094
+      c-4.355-8.008-10.071-15.555-7.75-25.693c3.004-13.112,14.597-21.728,27.456-20.666c4.702,0.388,8.396,1.07,11.869,4.614
+      c9.481,9.685,19.354,18.986,29.071,28.437"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M86.839,183.161c-14.307,3.994-28.616,7.995-42.924,11.968c-0.972,0.27-2.293,0.837-2.945,0.437
+      c-7.776-4.757-16.499-8.436-19.558-18.375c-3.954-12.858,1.777-26.116,13.444-31.626c4.267-2.015,7.807-3.271,12.586-1.938
+      c13.054,3.646,26.253,6.766,39.394,10.092"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M103.158,207.526c-10.185,10.399-20.369,20.807-30.565,31.188c-0.692,0.704-1.537,1.834-2.286,1.814
+      c-8.93-0.227-18.135,0.925-25.603-6.012c-9.656-8.975-11.289-23.035-4.086-33.429c2.634-3.8,5.022-6.603,9.732-7.812
+      c12.865-3.302,25.597-7.123,38.379-10.739"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M128.434,221.455c-3.591,13.985-7.178,27.976-10.788,41.95c-0.245,0.948-0.41,2.338-1.063,2.693
+      c-7.784,4.233-15.12,9.788-24.974,7.532c-12.745-2.92-21.122-14.188-20.089-26.688c0.377-4.571,1.04-8.163,4.485-11.538
+      c9.415-9.215,18.455-18.813,27.641-28.258"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M156.828,220.517c3.871,13.863,7.746,27.73,11.596,41.594c0.262,0.941,0.812,2.222,0.425,2.855
+      c-4.609,7.534-8.175,15.986-17.807,18.951c-12.458,3.832-25.308-1.722-30.646-13.027c-1.953-4.135-3.171-7.566-1.878-12.196
+      c3.534-12.649,6.555-25.442,9.779-38.176"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M181.104,204.808c10.402,10.186,20.811,20.372,31.193,30.569c0.705,0.692,1.835,1.535,1.816,2.285
+      c-0.228,8.931,0.924,18.138-6.014,25.606c-8.976,9.655-23.039,11.29-33.433,4.087c-3.802-2.634-6.604-5.024-7.813-9.733
+      c-3.301-12.867-7.124-25.6-10.74-38.385"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M195.511,180.505c13.984,3.591,27.974,7.179,41.947,10.789c0.948,0.243,2.337,0.408,2.693,1.061
+      c4.231,7.783,9.786,15.12,7.531,24.974c-2.92,12.742-14.188,21.121-26.688,20.088c-4.57-0.378-8.161-1.04-11.535-4.485
+      c-9.216-9.413-18.812-18.454-28.257-27.641"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M180.273,127.148c10.186-10.399,20.367-20.802,30.566-31.187c0.691-0.704,1.536-1.834,2.285-1.814
+      c8.93,0.226,18.134-0.927,25.602,6.012c9.656,8.974,11.289,23.034,4.087,33.427c-2.635,3.803-5.023,6.604-9.731,7.812
+      c-12.866,3.301-25.597,7.124-38.381,10.739"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M196.5,151.5c14.333-4,28.665-8.006,43.004-11.986c0.972-0.27,2.297-0.839,2.95-0.438c7.79,4.766,16.528,8.449,19.593,18.41
+      c3.962,12.881-1.779,26.163-13.468,31.684c-4.276,2.02-7.823,3.278-12.609,1.941c-13.078-3.653-26.303-6.777-39.47-10.11"/>
+    <ellipse fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="141.084" cy="166.465" rx="55.416" ry="55.121"/>
+    <path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M180.008,161.001c-1.949-3.936-6.103-5.593-9.539-6.362c-19.269-4.316-38.65-4.69-57.954-0.075
+      c-2.945,0.704-5.851,1.717-8.572,3.342c-2.414,1.442-2.98,3.409-2.384,5.578c4.529,16.506,11.942,30.413,29.361,37.221
+      c10.711,4.187,19.619,1.637,28.011-4.302C170.737,188.048,178.115,175.62,180.008,161.001z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M122.5,129.5c-2.677,1.095-4.395,3.265-5.979,5.515c-1.572,2.233-0.768,4.18,0.963,6c1.573,1.653,2.818,1.008,4.561,0.068
+      c2.806-1.513,5.394-2.896,5.462-6.583c0.058-3.102-1.446-4.739-4.507-5"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+      M160.179,129.5c2.678,1.095,4.395,3.265,5.979,5.515c1.572,2.233,0.768,4.18-0.963,6c-1.573,1.653-2.818,1.008-4.561,0.068
+      c-2.807-1.513-5.395-2.896-5.463-6.583c-0.057-3.102,1.446-4.739,4.508-5"/>
+    </g>
+  </svg>
+</div>
+
+<script type="text/javascript">
+
+var audioApi = new window.AudioContext;
+
+// variables
+var audioBuffer,
+    analyserNode,
+    frequencyData = new Uint8Array(16),
+    audioEl = document.querySelector('audio'),
+    useMic = true;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioApi.createAnalyser();
+  analyserNode.fftSize = 32;
+  audioSource.connect(analyserNode);
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+function gotStream(stream) {
+    // Create an audio input from the stream.
+    var audioSource = audioApi.createMediaStreamSource(stream);
+    createAnalyserNode(audioSource);
+    animate();
+
+}
+
+// pipe in analysing to getUserMedia
+if (useMic) {
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);  
+} else {
+  var soundFile = audioApi.createMediaElementSource(audioEl);
+  createAnalyserNode(soundFile);
+  soundFile.connect(audioApi.destination);
+  analyserNode.connect(audioApi.destination);
+  audioEl.play();
+  animate();
+}
+
+
+// enter and exit
+var svg = d3.select('svg');
+var flower = svg.selectAll('.flower');
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function animate() {
+
+  requestAnimationFrame(animate);
+  analyserNode.getByteFrequencyData(frequencyData);
+
+  flower = flower.data(frequencyData);
+  
+  flower
+    .enter().append('.flower');
+    
+  
+  flower
+    .exit().remove();
+
+}
+
+</script>
+</body>
+
+
+</html>
