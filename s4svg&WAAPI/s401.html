@@ -25,8 +25,6 @@
 
 <body>
 
-<audio src="https://github.com/Rumyra/MIDI-demos/blob/master/public/Guilt.mp3?raw=true" autoplay controls crossorigin="anonymous"></audio>
-
 <div id="screen">
   <svg>
     <g class="flower" width="280px" height="330px">
@@ -100,8 +98,7 @@ var audioApi = new window.AudioContext;
 var audioBuffer,
     analyserNode,
     frequencyData = new Uint8Array(16),
-    audioEl = document.querySelector('audio'),
-    useMic = true;
+    audioEl = document.querySelector('audio');
 
 // create an audio API analyser node and connect to source
 function createAnalyserNode(audioSource) {
@@ -120,23 +117,13 @@ function gotStream(stream) {
 }
 
 // pipe in analysing to getUserMedia
-if (useMic) {
   navigator.mediaDevices.getUserMedia({ audio: true, video: false })
   .then(gotStream);  
-} else {
-  var soundFile = audioApi.createMediaElementSource(audioEl);
-  createAnalyserNode(soundFile);
-  soundFile.connect(audioApi.destination);
-  analyserNode.connect(audioApi.destination);
-  audioEl.play();
-  animate();
-}
 
 
 // enter and exit
 var svg = d3.select('svg');
-var flower = svg.selectAll('.flower');
-
+var flower = svg.selectAll('g');
 
 //<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
 function animate() {
@@ -147,7 +134,7 @@ function animate() {
   flower = flower.data(frequencyData);
   
   flower
-    .enter().append('.flower');
+    .enter().append('g');
     
   
   flower

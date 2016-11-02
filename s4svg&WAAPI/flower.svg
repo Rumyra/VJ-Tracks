@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="280px" height="330px" viewBox="0 0 280 330" enable-background="new 0 0 280 330" xml:space="preserve">
+<g id="flower" width="280px" height="330px">
 <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M154.954,113.339c3.592-13.984,7.178-27.971,10.788-41.949c0.246-0.947,0.411-2.336,1.063-2.691
 	c7.782-4.234,15.118-9.79,24.974-7.532c12.745,2.919,21.12,14.187,20.089,26.687c-0.378,4.571-1.04,8.162-4.486,11.536
@@ -61,4 +60,4 @@
 <path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M160.179,129.5c2.678,1.095,4.395,3.265,5.979,5.515c1.572,2.233,0.768,4.18-0.963,6c-1.573,1.653-2.818,1.008-4.561,0.068
 	c-2.807-1.513-5.395-2.896-5.463-6.583c-0.057-3.102,1.446-4.739,4.508-5"/>
-</svg>
+</g>
