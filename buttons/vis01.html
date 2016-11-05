@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript">
+
+d3.json("buttonData.json", function(error, root) {
+  if (error) throw error;
+
+  console.log(root.button_one);
+
+  // root.button_one[0].dateTime get last 7 chars - use this
+
+  // svg.selectAll("path")
+  //     .data(partition.nodes(root))
+  //   .enter().append("path")
+  //     .attr("d", arc)
+  //     .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+  //     .on("click", click)
+  //   .append("title")
+  //     .text(function(d) { return d.name + "\n" + formatNumber(d.value); });
+});
+
+// will only work on button one
+var format = d3.time.format("%B%e,_%Y_at_%H:%M%p");
+var parse = format.parse("October 8, 2016 at 12:29PM"); // returns a Date
+  console.log(parse);
+
+
+var width = window.innerWidth,
+    height = window.innerHeight,
+    radius = Math.min(width, height) / 2;
+
+var svg = d3.select("svg")
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
+var g = d3.select("g");
+var arcs = g.selectAll("path");
+
+var arc = d3.svg.arc()
+    .startAngle(function(d, i) { return (i/8)*Math.PI; })
+    .endAngle(function(d, i) { return ((i+1)/8)*Math.PI; })
+    .innerRadius(function(d, i) { return radius/3; })
+    .outerRadius(function(d, i) { return d*2; });
+
+function drawSunburst() {
+
+  requestAnimationFrame(drawSunburst);
+  analyserNode.getByteFrequencyData(frequencyData);
+
+  arcs = arcs.data(frequencyData);
+
+  arcs
+    .enter().append("path")
+    .style("stroke", "#fff");
+    
+
+  arcs
+    .attr("d", arc)
+    .style("fill", function(d,i) { return 'hsla('+i*6+',60%,'+Math.floor(d/2.5)+'%,'+d/255+')'; })
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>

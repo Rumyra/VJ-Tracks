@@ -26,13 +26,18 @@
 
 </head>
 
-<body id="ohTwo">
+<body id="ohOne">
 
 <div id="screen">
   <section>
-    <span data-freq="low"></span>
-    <span data-freq="mid"></span>
-    <span data-freq="high"></span>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
   </section>
 </div>
 
@@ -68,17 +73,7 @@ function animateStuff() {
   requestAnimationFrame(animateStuff);
   analyserNode.getByteFrequencyData(frequencyData);
 
-  document.documentElement.style.setProperty('--lowFreqOne', frequencyData[5]/255);
-  document.documentElement.style.setProperty('--lowFreqTwo', Math.floor(frequencyData[20]/4));
-  document.documentElement.style.setProperty('--lowFreqThree', frequencyData[35]/255);
-
-  document.documentElement.style.setProperty('--midFreqOne', frequencyData[60]/255);
-  document.documentElement.style.setProperty('--midFreqTwo', frequencyData[75]/255);
-  document.documentElement.style.setProperty('--midFreqThree', frequencyData[90]/255);
-
-  document.documentElement.style.setProperty('--highFreqOne', frequencyData[110]/255);
-  document.documentElement.style.setProperty('--highFreqTwo', frequencyData[120]/255);
-  document.documentElement.style.setProperty('--highFreqThree', frequencyData[130]/255);
+  document.documentElement.style.setProperty('--level', frequencyData[20]/255);
   
   for (let i=0; i<totalEls; i++) {
 
