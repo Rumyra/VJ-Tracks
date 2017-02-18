@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+</div>
+
+<script type="text/javascript">
+
+var width = window.innerWidth,
+  height = window.innerHeight;
+
+var start_time = 1200,
+  end_time = 1700;
+
+var c = d3.scale.category20c();
+
+function getTime(dateTime) {
+  var newTime = dateTime.slice(-6,-2);
+  newTime = newTime.replace(':','');
+  // return newTime;
+  return parseInt(newTime, 10);
+}
+
+var screen = d3.select("#screen");
+
+d3.json("buttonDataTwo.json", function(error, data) {
+  if (error) throw error;
+
+  // buttons
+  for (let but=0; but<data.length; but++) {
+
+    // each click
+    for (let clk=0; clk<data[but].length; clk++) {
+
+      var thisClass = '';
+      if (but === 0) {
+        if (clk === 0) {
+          thisClass = "ent click";
+        } else if (clk === 1) {
+          thisClass = "ent doubClick";
+        } else {
+          thisClass = "ent hold";
+        }
+      } else if (but === 1) {
+        if (clk === 0) {
+          thisClass = "bar click";
+        } else if (clk === 1) {
+          thisClass = "bar doubClick";
+        } else {
+          thisClass = "bar hold";
+        }
+      } else {
+        if (clk === 0) {
+          thisClass = "toilet click";
+        } else if (clk === 1) {
+          thisClass = "toilet doubClick";
+        } else {
+          thisClass = "toilet hold";
+        }
+      }
+
+      var div = screen.append("div").attr("class","all");
+      
+      // build dom
+      var clicks = div.selectAll("i")
+      .data(data[but][clk])
+      .enter()
+      .append("i");
+      
+      clicks
+        .style("transform", function(d, i) {
+          return "translate("+((getTime(d)-100)+clk)*3+"px, "+((but*90)+((clk+1)*30))+"px)";
+        })
+        .attr("class", thisClass);
+        
+
+    }
+
+  }
+
+});
+
+
+</script>
+</body>
+
+
+</html>

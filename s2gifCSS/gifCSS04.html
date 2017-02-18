@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2015">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <link rel="stylesheet" href="style.css">
+  <style type="text/css">
+    
+  </style>
+
+</head>
+
+<body id="ohFive">
+
+<div id="screen">
+  <section>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </section>
+</div>
+
+</body>
+<script type="text/javascript">
+
+// set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioAPI = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+
+// variables
+var analyserNode,
+    frequencyData = new Uint8Array(64);
+const screen = document.querySelector('#screen'),
+    allRepeatedEls = document.querySelectorAll('#screen section'),
+    totalEls = allRepeatedEls.length;
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioAPI.createAnalyser();
+  analyserNode.fftSize = 128;
+  audioSource.connect(analyserNode);
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// set which element to be symmetry'd
+const fragmentedSection = document.querySelector('#screen section');
+
+function createQuarter(fragment, screen) {
+
+  // create a new 'quarter', set styles
+  let quarterEl = document.createElement('div');
+  quarterEl.classList = 'quarter';
+  quarterEl.style.width = '50vw';
+  quarterEl.style.height = '50vh';
+  quarterEl.style.overflow = 'hidden';
+
+  // duplicate original fragment to be mirrored in quarter
+  let newHtml = fragment.outerHTML+fragment.outerHTML;
+  quarterEl.innerHTML = newHtml;
+  screen.removeChild(fragment);
+  screen.appendChild(quarterEl);
+
+  // rotate and set styles on new fragments within quarter
+  let newFragments = document.querySelectorAll('.quarter '+fragment.localName);
+  for (let i = newFragments.length - 1; i >= 0; i--) {
+    newFragments[i].style.width = '50vw';
+    newFragments[i].style.height = '50vh';
+  }
+  newFragments[1].style.transform = 'translateY(-50vh) rotateZ(180deg)';
+
+  // rotate quarter
+  for (var i=3-1; i>=0; i--) {
+    let nextQuarter = quarterEl.cloneNode(true);
+    screen.appendChild(nextQuarter);
+  }
+  const allQuarters = document.querySelectorAll('.quarter');
+  for (var i=allQuarters.length-1; i>0; i--) {
+    allQuarters[i].style.transform = 'translateY('+i*-50+'vh) rotateZ('+i*90+'deg)';
+    allQuarters[i].style.transformOrigin = 'right bottom';
+  }
+  
+}
+
+createQuarter(fragmentedSection, screen);
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+// get's html elements, loops over them & attaches a frequency from analysed data - what you do is up to you!
+function animateStuff() {
+  requestAnimationFrame(animateStuff);
+  analyserNode.getByteFrequencyData(frequencyData);
+  
+  document.documentElement.style.setProperty('--level', frequencyData[10]/220);
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+var gotStream = function(stream) {
+  // Create an audio input from the stream.
+  var audioSource = audioAPI.createMediaStreamSource(stream);
+  createAnalyserNode(audioSource);
+  animateStuff();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+</script>
+
+</html>

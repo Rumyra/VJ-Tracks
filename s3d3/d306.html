@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript">
+
+var audioApi = new window.AudioContext;
+
+// variables
+var audioBuffer,
+    analyserNode,
+    frequencyData = new Uint8Array(16);
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioApi.createAnalyser();
+  analyserNode.fftSize = 32;
+  audioSource.connect(analyserNode);
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+function gotStream(stream) {
+    // Create an audio input from the stream.
+    var audioSource = audioApi.createMediaStreamSource(stream);
+    createAnalyserNode(audioSource);
+    drawCircles();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+// enter and exit
+var svg = d3.select('svg');
+var circle = svg.selectAll('circle'),
+  line = svg.selectAll('line'),
+  radius = window.innerHeight/2.5-50;
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function drawCircles() {
+
+  requestAnimationFrame(drawCircles);
+  analyserNode.getByteFrequencyData(frequencyData);
+
+  circle = circle.data(frequencyData);
+  
+  circle
+    .enter().append('circle')
+    .attr("cy", function(d, i) {
+      // return Math.round( (window.innerHeight/2) + (i*Math.random) );
+      return 50*i;
+    })
+    .attr("cx", function(d, i) {
+      // return Math.round( (window.innerWidth/2) + (i*Math.random) );
+      return 90*i;
+    });
+  
+  circle
+    .attr("r", function(d, i) { return (d/2)*i/2; })
+    .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.5)"} )
+    .exit().remove();
+
+}
+
+</script>
+</body>
+
+
+</html>

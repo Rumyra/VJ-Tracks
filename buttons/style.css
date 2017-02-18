@@ -1,0 +1,31 @@
+html, body {
+  margin:0px; padding:0px;
+}
+
+#screen {
+  margin:0px; padding:0px;
+  width:100vw; height:100vh;
+  background: #222;
+}
+
+#screen div i {
+  display: inline-block; position:relative;
+  width:10px; height:30px;
+  font-style: normal; font-size: 200%;
+}
+#screen div i:before {
+  width:10px; height:10px;
+  position: absolute; top:-5px; left:-5px;
+}
+#screen .ent:before {content: '🚪';}
+#screen .bar:before {content: '☕️';}
+#screen .toilet:before {content: '🚻';}
+
+#screen .five .ent.doubClick:before {content: '📢';}
+#screen .five .ent.hold:before {content: '💜';}
+
+#screen .five .bar.doubClick:before {content: '🍻';}
+#screen .five .bar.hold:before {content: '🍵';}
+
+#screen .five .toilet.doubClick:before {content: '🚽';}
+#screen .five .toilet.hold:before {content: '💩';}

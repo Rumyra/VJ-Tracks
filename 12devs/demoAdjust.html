@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+  <style type="text/css">
+    html, body {
+  padding: 0px;
+  margin: 0px; }
+
+  #screen, svg {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px; }
+
+  #screen {
+    background: black; }
+  </style>
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<audio src="galvanize.m4a" id="musicTrack"></audio>
+
+<script type="text/javascript">
+
+var audioApi = new window.AudioContext;
+
+const audioEl = document.getElementById('musicTrack'),
+  audioTrack = audioApi.createMediaElementSource(audioEl);
+
+// variables
+var audioBuffer,
+    analyserNode,
+    frequencyData = new Uint8Array(2048);
+
+// create an audio API analyser node and connect to source
+function createAnalyserNode(audioSource) {
+  analyserNode = audioApi.createAnalyser();
+  analyserNode.fftSize = 4096;
+  audioSource.connect(analyserNode);
+}
+
+// getUserMedia success callback -> pipe audio stream into audio API
+function gotStream(stream) {
+    // Create an audio input from the stream.
+    var audioSource = audioApi.createMediaStreamSource(stream);
+    createAnalyserNode(audioSource);
+    drawSunburst();
+}
+
+// pipe in analysing to getUserMedia
+navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+  .then(gotStream);
+
+// enter and exit
+var width = window.innerWidth,
+    height = window.innerHeight,
+    radius = Math.min(width, height) / 2;
+
+var svg = d3.select("svg")
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
+var g = d3.select("g");
+var arcs = g.selectAll("path");
+
+var arc = d3.svg.arc()
+    .startAngle(function(d, i) { return (i/8)*Math.PI; })
+    .endAngle(function(d, i) { return ((i+1)/8)*Math.PI; })
+    .innerRadius(function(d, i) { return radius/3; })
+    .outerRadius(function(d, i) { return d*2; });
+
+function adjustFreqData() {
+  analyserNode.getByteFrequencyData(frequencyData);
+  var removed = frequencyData.slice(0,512);
+  
+  var newFreqs = [], prevRangeStart = 0, prevItemCount = 0;
+  // looping for my new 16 items
+  for (let j=1; j<17; j++) {
+    var pow, itemCount, rangeStart;
+    if (j%2 === 1) {
+      pow = (j-1)/2;
+    } else {
+      pow = j/2;
+    }
+    itemCount = Math.pow(2, pow);
+    if (prevItemCount === 1) {
+      rangeStart = 0;
+    } else {
+      rangeStart = prevRangeStart + (prevItemCount/2);
+    }
+
+    var newValue = 0, total = 0;
+    for (let k=rangeStart; k<rangeStart+itemCount; k++) {
+      // add up items and divide by total
+      total += frequencyData[k];
+      newValue = total/itemCount;
+    }
+    newFreqs.push(newValue);
+
+    prevItemCount = itemCount;
+    prevRangeStart = rangeStart;
+  }
+  return newFreqs;
+}
+
+function drawSunburst() {
+
+  requestAnimationFrame(drawSunburst);
+  var newData = adjustFreqData();
+  arcs = arcs.data(newData);
+
+  arcs
+    .enter().append("path")
+    .style("stroke", "#fff");
+
+  arcs
+    .attr("d", arc)
+    .style("fill", function(d,i) { return 'hsla('+i*6+',60%,'+Math.floor(d/2.5)+'%,'+d/255+')'; })
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>

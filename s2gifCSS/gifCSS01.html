@@ -39,6 +39,83 @@
     <div><i></i></div>
     <div><i></i></div>
   </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
+
+  <section>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+    <div><i></i></div>
+  </section>
 </div>
 
 </body>
@@ -73,7 +150,7 @@ function animateStuff() {
   requestAnimationFrame(animateStuff);
   analyserNode.getByteFrequencyData(frequencyData);
 
-  document.documentElement.style.setProperty('--level', frequencyData[20]/255);
+  document.documentElement.style.setProperty('--level', Math.floor(frequencyData[20]/25));
   
   for (let i=0; i<totalEls; i++) {
 

@@ -1,5 +1,5 @@
-{
-  "button_one" : [
+[
+  [
     { "longitude" : -2.125545384428068,
     "latitude" : 51.46247854114583,
     "dateTime" : "October 5, 2016 at 06:08PM", "clickType" : "hold" },
@@ -67,7 +67,7 @@
       "latitude" : 51.45224221055531,
       "dateTime" : "October 8, 2016 at 12:29PM", "clickType" : "double_click" }
   ],
-  "button_two" : [
+  [
     { "longitude" : -2.125721851168934,
       "latitude" : 51.46244253618107,
       "dateTime" : "October 12, 2016 at 03:54PM", "clickType" : "click" },
@@ -300,4 +300,4 @@
       "latitude" : 51.45954925714086,
     "dateTime" : "October 29, 2016 at 05:21PM", "clickType" : "click" }
   ]
-}
+]

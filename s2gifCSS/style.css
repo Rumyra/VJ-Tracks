@@ -19,92 +19,108 @@
     height: 100vh;
     background-color: black; }
     #ohOne #screen section {
-      width: 90vw;
-      margin: 0px auto;
-      transform: translateY(50vh); }
-      #ohOne #screen section div:nth-of-type(0) {
-        transform: translateX(-11px) translateY(0px) rotate(0deg); }
-        #ohOne #screen section div:nth-of-type(0) i {
-          background-color: rgba(214, 92, 92, 0.8);
-          border: 1px solid rgba(214, 92, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 0ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(1) {
-        transform: translateX(-11px) translateY(-22px) rotate(22.5deg); }
-        #ohOne #screen section div:nth-of-type(1) i {
-          background-color: rgba(214, 184, 92, 0.8);
-          border: 1px solid rgba(214, 184, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 200ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(2) {
-        transform: translateX(-11px) translateY(-44px) rotate(45deg); }
-        #ohOne #screen section div:nth-of-type(2) i {
-          background-color: rgba(153, 214, 92, 0.8);
-          border: 1px solid rgba(153, 214, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 400ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(3) {
-        transform: translateX(-11px) translateY(-66px) rotate(67.5deg); }
-        #ohOne #screen section div:nth-of-type(3) i {
-          background-color: rgba(92, 214, 122, 0.8);
-          border: 1px solid rgba(92, 214, 122, 0.9);
-          animation: ohThreeLine 1.6s linear 600ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(4) {
-        transform: translateX(-11px) translateY(-88px) rotate(90deg); }
-        #ohOne #screen section div:nth-of-type(4) i {
-          background-color: rgba(92, 214, 214, 0.8);
-          border: 1px solid rgba(92, 214, 214, 0.9);
-          animation: ohThreeLine 1.6s linear 800ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(5) {
-        transform: translateX(-11px) translateY(-110px) rotate(112.5deg); }
-        #ohOne #screen section div:nth-of-type(5) i {
-          background-color: rgba(92, 122, 214, 0.8);
-          border: 1px solid rgba(92, 122, 214, 0.9);
-          animation: ohThreeLine 1.6s linear 1000ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(6) {
-        transform: translateX(-11px) translateY(-132px) rotate(135deg); }
-        #ohOne #screen section div:nth-of-type(6) i {
-          background-color: rgba(153, 92, 214, 0.8);
-          border: 1px solid rgba(153, 92, 214, 0.9);
-          animation: ohThreeLine 1.6s linear 1200ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(7) {
-        transform: translateX(-11px) translateY(-154px) rotate(157.5deg); }
-        #ohOne #screen section div:nth-of-type(7) i {
-          background-color: rgba(214, 92, 184, 0.8);
-          border: 1px solid rgba(214, 92, 184, 0.9);
-          animation: ohThreeLine 1.6s linear 1400ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(8) {
-        transform: translateX(-11px) translateY(-176px) rotate(180deg); }
-        #ohOne #screen section div:nth-of-type(8) i {
-          background-color: rgba(214, 92, 92, 0.8);
-          border: 1px solid rgba(214, 92, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 1600ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(9) {
-        transform: translateX(-11px) translateY(-198px) rotate(202.5deg); }
-        #ohOne #screen section div:nth-of-type(9) i {
-          background-color: rgba(214, 184, 92, 0.8);
-          border: 1px solid rgba(214, 184, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 1800ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(10) {
-        transform: translateX(-11px) translateY(-220px) rotate(225deg); }
-        #ohOne #screen section div:nth-of-type(10) i {
-          background-color: rgba(153, 214, 92, 0.8);
-          border: 1px solid rgba(153, 214, 92, 0.9);
-          animation: ohThreeLine 1.6s linear 2000ms alternate infinite; }
-      #ohOne #screen section div:nth-of-type(11) {
-        transform: translateX(-11px) translateY(-242px) rotate(247.5deg); }
-        #ohOne #screen section div:nth-of-type(11) i {
-          background-color: rgba(92, 214, 122, 0.8);
-          border: 1px solid rgba(92, 214, 122, 0.9);
-          animation: ohThreeLine 1.6s linear 2200ms alternate infinite; }
+      width: 50vw;
+      transform: translate(15vw, 20vh); }
+      #ohOne #screen section:nth-of-type(2) {
+        transform: translate(55vw, 25vh); }
+      #ohOne #screen section:nth-of-type(3) {
+        transform: translate(0vw, 30vh); }
+      #ohOne #screen section:nth-of-type(4) {
+        transform: translate(40vw, 35vh); }
+      #ohOne #screen section:nth-of-type(5) {
+        transform: translate(15vw, 40vh); }
+      #ohOne #screen section:nth-of-type(6) {
+        transform: translate(55vw, 45vh); }
+      #ohOne #screen section:nth-of-type(7) {
+        transform: translate(0vw, 50vh); }
+      #ohOne #screen section:nth-of-type(8) {
+        transform: translate(40vw, 55vh); }
+      #ohOne #screen section div {
+        height: 8px;
+        opacity: calc(0.2*var(--level)); }
+        #ohOne #screen section div:nth-of-type(0) {
+          transform: translateY(0px) rotate(0deg); }
+          #ohOne #screen section div:nth-of-type(0) i {
+            background-color: rgba(214, 92, 92, 0.8);
+            border: 1px solid rgba(214, 92, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 0ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(1) {
+          transform: translateY(-10px) rotate(22.5deg); }
+          #ohOne #screen section div:nth-of-type(1) i {
+            background-color: rgba(214, 184, 92, 0.8);
+            border: 1px solid rgba(214, 184, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 200ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(2) {
+          transform: translateY(-20px) rotate(45deg); }
+          #ohOne #screen section div:nth-of-type(2) i {
+            background-color: rgba(153, 214, 92, 0.8);
+            border: 1px solid rgba(153, 214, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 400ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(3) {
+          transform: translateY(-30px) rotate(67.5deg); }
+          #ohOne #screen section div:nth-of-type(3) i {
+            background-color: rgba(92, 214, 122, 0.8);
+            border: 1px solid rgba(92, 214, 122, 0.9);
+            animation: ohThreeLine 1.6s linear 600ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(4) {
+          transform: translateY(-40px) rotate(90deg); }
+          #ohOne #screen section div:nth-of-type(4) i {
+            background-color: rgba(92, 214, 214, 0.8);
+            border: 1px solid rgba(92, 214, 214, 0.9);
+            animation: ohThreeLine 1.6s linear 800ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(5) {
+          transform: translateY(-50px) rotate(112.5deg); }
+          #ohOne #screen section div:nth-of-type(5) i {
+            background-color: rgba(92, 122, 214, 0.8);
+            border: 1px solid rgba(92, 122, 214, 0.9);
+            animation: ohThreeLine 1.6s linear 1000ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(6) {
+          transform: translateY(-60px) rotate(135deg); }
+          #ohOne #screen section div:nth-of-type(6) i {
+            background-color: rgba(153, 92, 214, 0.8);
+            border: 1px solid rgba(153, 92, 214, 0.9);
+            animation: ohThreeLine 1.6s linear 1200ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(7) {
+          transform: translateY(-70px) rotate(157.5deg); }
+          #ohOne #screen section div:nth-of-type(7) i {
+            background-color: rgba(214, 92, 184, 0.8);
+            border: 1px solid rgba(214, 92, 184, 0.9);
+            animation: ohThreeLine 1.6s linear 1400ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(8) {
+          transform: translateY(-80px) rotate(180deg); }
+          #ohOne #screen section div:nth-of-type(8) i {
+            background-color: rgba(214, 92, 92, 0.8);
+            border: 1px solid rgba(214, 92, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 1600ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(9) {
+          transform: translateY(-90px) rotate(202.5deg); }
+          #ohOne #screen section div:nth-of-type(9) i {
+            background-color: rgba(214, 184, 92, 0.8);
+            border: 1px solid rgba(214, 184, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 1800ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(10) {
+          transform: translateY(-100px) rotate(225deg); }
+          #ohOne #screen section div:nth-of-type(10) i {
+            background-color: rgba(153, 214, 92, 0.8);
+            border: 1px solid rgba(153, 214, 92, 0.9);
+            animation: ohThreeLine 1.6s linear 2000ms alternate infinite; }
+        #ohOne #screen section div:nth-of-type(11) {
+          transform: translateY(-110px) rotate(247.5deg); }
+          #ohOne #screen section div:nth-of-type(11) i {
+            background-color: rgba(92, 214, 122, 0.8);
+            border: 1px solid rgba(92, 214, 122, 0.9);
+            animation: ohThreeLine 1.6s linear 2200ms alternate infinite; }
       #ohOne #screen section i {
         display: inline-block;
-        width: calc(var(--level)*20px);
-        height: calc(var(--level)*20px);
+        width: 10px;
+        height: 10px;
         border-radius: 50%; }
 
 @keyframes ohThreeLine {
   0% {
     transform: translateX(0vw); }
   100% {
-    transform: translateX(80vw); } }
+    transform: translateX(50vw); } }
 #ohTwo {
   margin: 0px;
   padding: 0px; }
@@ -170,11 +186,12 @@
       margin: 0px;
       position: absolute;
       top: 50%;
-      left: 50%; }
+      left: 50%;
+      will-change: mix-blend-mode; }
       #ohFour #screen section i {
         display: inline-block;
         border-radius: 50%;
-        background-blend-mode: color; }
+        will-change: width, height; }
       #ohFour #screen section:nth-of-type(1) {
         width: 8vw;
         margin-left: -4vw; }
@@ -300,5 +317,133 @@
 
 #ohFour #screen section:nth-of-type(9) {
   mix-blend-mode: luminosity; }
+
+#ohFive {
+  margin: 0px;
+  padding: 0px; }
+  #ohFive #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+  #ohFive #screen section div {
+    height: 20px;
+    opacity: var(--level); }
+    #ohFive #screen section div:nth-of-type(1) {
+      width: 50px;
+      background-color: rgba(214, 153, 92, 0.7);
+      border: 1px solid rgba(214, 153, 92, 0.9);
+      animation: moveDivs 400ms linear 200ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(2) {
+      width: 100px;
+      background-color: rgba(214, 214, 92, 0.7);
+      border: 1px solid rgba(214, 214, 92, 0.9);
+      animation: moveDivs 800ms linear 400ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(3) {
+      width: 150px;
+      background-color: rgba(153, 214, 92, 0.7);
+      border: 1px solid rgba(153, 214, 92, 0.9);
+      animation: moveDivs 1200ms linear 600ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(4) {
+      width: 200px;
+      background-color: rgba(92, 214, 92, 0.7);
+      border: 1px solid rgba(92, 214, 92, 0.9);
+      animation: moveDivs 1600ms linear 800ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(5) {
+      width: 250px;
+      background-color: rgba(92, 214, 153, 0.7);
+      border: 1px solid rgba(92, 214, 153, 0.9);
+      animation: moveDivs 2000ms linear 1000ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(6) {
+      width: 300px;
+      background-color: rgba(92, 214, 214, 0.7);
+      border: 1px solid rgba(92, 214, 214, 0.9);
+      animation: moveDivs 2400ms linear 1200ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(7) {
+      width: 350px;
+      background-color: rgba(92, 153, 214, 0.7);
+      border: 1px solid rgba(92, 153, 214, 0.9);
+      animation: moveDivs 2800ms linear 1400ms alternate infinite; }
+    #ohFive #screen section div:nth-of-type(8) {
+      width: 400px;
+      background-color: rgba(92, 92, 214, 0.7);
+      border: 1px solid rgba(92, 92, 214, 0.9);
+      animation: moveDivs 3200ms linear 1600ms alternate infinite; }
+
+#ohSix {
+  margin: 0px;
+  padding: 0px; }
+  #ohSix #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+  #ohSix #screen section div {
+    height: 20px; }
+    #ohSix #screen section div:nth-of-type(1) {
+      width: calc(300px*var(--freq1) );
+      background-color: rgba(92, 214, 92, 0.7);
+      border: 1px solid rgba(92, 214, 92, 0.9);
+      animation: moveDivs 400ms linear 200ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(2) {
+      width: calc(300px*var(--freq2) );
+      background-color: rgba(92, 214, 153, 0.7);
+      border: 1px solid rgba(92, 214, 153, 0.9);
+      animation: moveDivs 800ms linear 400ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(3) {
+      width: calc(300px*var(--freq3) );
+      background-color: rgba(92, 214, 214, 0.7);
+      border: 1px solid rgba(92, 214, 214, 0.9);
+      animation: moveDivs 1200ms linear 600ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(4) {
+      width: calc(300px*var(--freq4) );
+      background-color: rgba(92, 153, 214, 0.7);
+      border: 1px solid rgba(92, 153, 214, 0.9);
+      animation: moveDivs 1600ms linear 800ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(5) {
+      width: calc(300px*var(--freq5) );
+      background-color: rgba(92, 92, 214, 0.7);
+      border: 1px solid rgba(92, 92, 214, 0.9);
+      animation: moveDivs 2000ms linear 1000ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(6) {
+      width: calc(300px*var(--freq6) );
+      background-color: rgba(153, 92, 214, 0.7);
+      border: 1px solid rgba(153, 92, 214, 0.9);
+      animation: moveDivs 2400ms linear 1200ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(7) {
+      width: calc(300px*var(--freq7) );
+      background-color: rgba(214, 92, 214, 0.7);
+      border: 1px solid rgba(214, 92, 214, 0.9);
+      animation: moveDivs 2800ms linear 1400ms alternate infinite; }
+    #ohSix #screen section div:nth-of-type(8) {
+      width: calc(300px*var(--freq8) );
+      background-color: rgba(214, 92, 153, 0.7);
+      border: 1px solid rgba(214, 92, 153, 0.9);
+      animation: moveDivs 3200ms linear 1600ms alternate infinite; }
+
+@keyframes moveDivs {
+  0% {
+    transform: translateY(0vh); }
+  100% {
+    transform: translateY(50vh); } }
+#ohGif {
+  margin: 0px;
+  padding: 0px; }
+  #ohGif #screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: black; }
+  #ohGif #screen section {
+    overflow: hidden; }
+    #ohGif #screen section img {
+      height: 50vh;
+      width: auto; }
+
+@keyframes moveDivs {
+  0% {
+    transform: translateY(0vh); }
+  100% {
+    transform: translateY(50vh); } }
 
 /*# sourceMappingURL=style.css.map */

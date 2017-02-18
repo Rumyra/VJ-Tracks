@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+
+  <style type="text/css">
+    body {text-align:center;}
+
+    #controls {
+      width: 70%;
+      background: #ddd;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px #333;
+    }
+    /*toggle inspired by a pen by Chris Hart http://codepen.io/personable/pen/stpwD?editors=1100*/
+    .toggle {position:relative;}
+    .toggle label {
+      position:relative;
+      display:flex; align-items:center;
+      user-select:none;
+    }
+    .toggle label .can-toggle__switch {
+      height:36px; flex:0px 0px 134px;
+      background:red; border-radius: 4px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .toggle label .can-toggle__switch:before {
+      content:attr(data-checked);
+      position: absolute; top:0px; left:67px;
+      width:67px; padding:0px 12px;
+      font-size:12px; color:#eee;
+      line-height: 36px; text-align:center;
+    }
+    .toggle label .can-toggle__switch:after {
+      content:attr(data-unchecked);
+      position: absolute; top:2px; left:2px;
+      width:65px; padding:0px 12px;
+      background: white; border-radius: 2px;
+      font-size:12px; color:red;
+      line-height: 32px; text-align:center;
+      transition: transform 0.3s ease-in-out;
+      transform: translate3d(0, 0, 0);
+      z-index:5;
+    }
+    .toggle input[type="checkbox"] {
+      position:absolute; top:0px; left:0px;
+      opacity:0;
+    }
+    .toggle input[type="checkbox"]:checked ~ label .can-toggle__switch {background-color:green;}
+    .toggle input[type="checkbox"]:checked ~ label .can-toggle__switch:before {content:attr(data-unchecked); left:0px;}
+    .toggle input[type="checkbox"]:checked ~ label .can-toggle__switch:after {
+      content: attr(data-checked);
+      transform:translate3d(65px, 0, 0);
+      color:green;
+    }
+
+
+    .freq-array i {
+      display:inline-block;
+      width:60px;
+      line-height: 1.4;
+    }
+    #filtered i {color:blue;}
+  </style>
+</head>
+
+<body>
+  <h2>Audio Analysis Return Values</h2>
+
+  <div id="controls">
+    <section class="button">
+      <label for="play-track">Start Music</label>
+      <button id="play-track">Play</button>
+    </section>
+    <section class="toggle">
+      <input id="toggle-filter" type="checkbox">
+      <label for="toggle-filter">
+        <div class="can-toggle__switch" data-checked="on" data-unchecked="off"></div>
+        <div class="can-toggle__label-text">Toggle Filter</div>
+      </label>
+    </section>
+  </div>
+
+  <section class="freq-array"></section>
+  <audio src="screwUp.mp3" id="music-track"></audio>
+
+  <!-- <section id="untampered" class="freqArray"></section>
+  <section id="filtered" class="freqArray">
+  </section> -->
+<script type="text/javascript">
+
+// set up audio context
+var audioContext = (window.AudioContext || window.webkitAudioContext);
+// create audio class
+if (audioContext) {
+  // Web Audio API is available.
+  var audioAPI = new audioContext();
+} else {
+  // Web Audio API is not available. Ask the user to use a supported browser.
+  alert("Oh nos! It appears your browser does not support the Web Audio API, please upgrade or use a different browser");
+}
+
+const arraySec = document.querySelector('.freq-array'),
+  audioEl = document.querySelector('#music-track'),
+  playButton = document.querySelector('#play-track'),
+  toggle = document.querySelector('#toggle-filter'),
+  audioTrack = audioAPI.createMediaElementSource(audioEl);
+
+var analyserNode = audioAPI.createAnalyser(),
+    frequencyData = new Uint8Array(128),
+    biQuadNodeFil = audioAPI.createBiquadFilter(),
+    filterVal = 20000;
+
+analyserNode.fftSize = 256;
+biQuadNodeFil.type = "lowpass";
+
+function connectTrack() {
+  audioTrack.connect(biQuadNodeFil);
+  biQuadNodeFil.connect(analyserNode);
+  audioTrack.connect(audioAPI.destination);
+  analyserNode.connect(audioAPI.destination);
+  audioEl.play();
+  animate();
+}
+
+playButton.onclick = function() {
+  if (audioEl.paused) {
+    connectTrack();
+    console.log('play');
+  } else {
+    audioEl.pause();
+    console.log('pause');
+  }
+}
+
+// constantly picking up mic data
+function animate() {
+  requestAnimationFrame(animate);
+  if (toggle.checked === true) {
+    filterVal = 1000;
+  } else {
+    filterVal = 20000;
+  }
+  biQuadNodeFil.frequency.value = filterVal;
+  analyserNode.getByteFrequencyData(frequencyData);
+  printArray();
+}
+
+function printArray() {
+  var newHTML = '';
+  frequencyData.forEach(function(el) {
+    newHTML += '<i>['+el+']</i>';
+  })
+  arraySec.innerHTML = newHTML;
+}
+
+
+
+</script>
+</body>
+
+
+</html>

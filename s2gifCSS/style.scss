@@ -21,12 +21,21 @@
     width:100vw; height:100vh;
     background-color: black;
     section {
-      width: 90vw; margin:0px auto;
-      transform: translateY(50vh);
+      width: 50vw;
+      transform: translate(15vw, 20vh);
+      &:nth-of-type(2) {transform: translate(55vw, 25vh)}
+      &:nth-of-type(3) {transform: translate(0vw, 30vh)}
+      &:nth-of-type(4) {transform: translate(40vw, 35vh)}
+      &:nth-of-type(5) {transform: translate(15vw, 40vh)}
+      &:nth-of-type(6) {transform: translate(55vw, 45vh)}
+      &:nth-of-type(7) {transform: translate(0vw, 50vh)}
+      &:nth-of-type(8) {transform: translate(40vw, 55vh)}
       div {
+        height:8px;
+        opacity: calc(0.2*var(--level));
         @for $i from 0 through 11 {
           &:nth-of-type(#{$i}) {
-            transform: translateX(-11px) translateY($i*-22px) rotate($i*22.5deg);
+            transform: translateY($i*-10px) rotate($i*22.5deg);
             i {
               background-color:hsla($i*45, 60%, 60%, 0.8);
               border:1px solid hsla($i*45, 60%, 60%, 0.9);
@@ -37,8 +46,8 @@
       }
       i {
         display: inline-block;
-        width:calc(var(--level)*20px);
-        height:calc(var(--level)*20px);
+        width:10px;
+        height:10px;
         border-radius: 50%;
       }//i
     }//section
@@ -47,7 +56,7 @@
 
 @keyframes ohThreeLine {
   0% {transform: translateX(0vw);}
-  100% {transform: translateX(80vw);}
+  100% {transform: translateX(50vw);}
 }
 
 #ohTwo {
@@ -139,10 +148,11 @@
     section {
       margin:0px;
       position: absolute; top:50%; left:50%;
+      will-change: mix-blend-mode;
       i {
         display: inline-block;
         border-radius: 50%;
-        background-blend-mode: color;
+        will-change: width, height;
       }
       @for $j from 1 through 9 {
         &:nth-of-type(#{$j}) {
@@ -178,4 +188,68 @@
   #ohFour #screen section:nth-of-type(#{$num}) {
     mix-blend-mode: $blendMode;
   }
+}
+
+#ohFive {
+  margin:0px; padding:0px;
+  #screen {
+    position: relative;
+    width:100vw; height:100vh;
+    background-color: black;
+  }
+  #screen section div {
+    height:20px;
+    opacity: var(--level);
+    @for $i from 1 through 8 {
+      &:nth-of-type(#{$i}) {
+        width:50px*$i;
+        background-color:hsla(30*$i,60%,60%,0.7);
+        border:1px solid hsla(30*$i,60%,60%,0.9);
+        animation: moveDivs #{$i*400}ms linear #{$i*200}ms alternate infinite;
+      }
+    }
+  }
+}
+
+#ohSix {
+  margin:0px; padding:0px;
+  #screen {
+    position: relative;
+    width:100vw; height:100vh;
+    background-color: black;
+  }
+  #screen section div {
+    height:20px;
+    @for $i from 1 through 8 {
+      &:nth-of-type(#{$i}) {
+        width:calc(300px*var(--freq#{$i}) );
+        background-color:hsla((30*$i)+90,60%,60%,0.7);
+        border:1px solid hsla((30*$i)+90,60%,60%,0.9);
+        animation: moveDivs #{$i*400}ms linear #{$i*200}ms alternate infinite;
+      }
+    }
+  }
+}
+@keyframes moveDivs {
+  0% {transform: translateY(0vh);}
+  100% {transform: translateY(50vh);}
+}
+
+#ohGif {
+  margin:0px; padding:0px;
+  #screen {
+    position: relative;
+    width:100vw; height:100vh;
+    background-color: black;
+  }
+  #screen section {
+    overflow: hidden;
+    img {
+      height: 50vh; width:auto;
+    }
+  }
+}
+@keyframes moveDivs {
+  0% {transform: translateY(0vh);}
+  100% {transform: translateY(50vh);}
 }

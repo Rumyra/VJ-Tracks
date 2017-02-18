@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript">
+
+var width = window.innerWidth,
+  height = window.innerHeight;
+
+var start_time = 1200,
+  end_time = 1700;
+
+var c = d3.scale.category20c();
+
+function getTime(dateTime) {
+  var newTime = dateTime.slice(-6,-2);
+  newTime = newTime.replace(':','');
+  // return newTime;
+  return parseInt(newTime, 10);
+}
+
+var svg = d3.select("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+d3.json("buttonDataTwo.json", function(error, data) {
+  if (error) throw error;
+
+  // buttons
+  for (let but=0; but<data.length; but++) {
+
+    // each click
+    for (let clk=0; clk<data[but].length; clk++) {
+      
+      // build dom
+      var g = svg.append("g").attr("class","journal");
+
+      var circles = g.selectAll("circle")
+      .data(data[but][clk])
+      .enter()
+      .append("circle");
+
+      circles
+        .attr("cx", function(d, i) { return ((getTime(d)-100)+clk)*4; })
+        .attr("cy", function(d, i) { return (but*180)+((clk+1)*60); })
+        .attr("r", 20)
+        .attr("stroke", "white")
+        .style("fill", "hsla(0,0%,100%,0.6)");
+
+      // for transistions
+      var butCol = "hsla("+but*120+20+",50%,50%,0.6)";
+      var radius = (clk+1)*10;
+
+      transColour(circles, butCol);
+
+      transShape(circles, radius);
+
+    }
+
+  }
+
+});
+
+// press c
+function transColour(els,col) {
+  window.addEventListener('keyup', function(e) {
+    if (e.keyCode === 67) {
+      els.transition().style("fill",col).attr("stroke", "none").duration(1000);
+    }
+  }, false);
+}
+
+// press s
+function transShape(els,rad) {
+  window.addEventListener('keyup', function(e) {
+    if (e.keyCode === 83) {
+      els.transition().attr("r",rad).duration(1000);
+    }
+  }, false);
+}
+
+
+</script>
+</body>
+
+
+</html>
