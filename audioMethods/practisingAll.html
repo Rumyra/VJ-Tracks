@@ -48,7 +48,7 @@
 
 <script type="text/javascript">
 
-var audioApi = new window.AudioContext;
+  
 
 const audioEl = document.getElementById('music-track'),
   playButton = document.getElementById('play-audio'),
@@ -60,91 +60,93 @@ var analyserNode = audioApi.createAnalyser(),
 
 analyserNode.fftSize = 4096;
 
-function connectTrack() {
-  console.log('fired');
-  audioTrack.connect(analyserNode);
-  audioTrack.connect(audioApi.destination);
-  analyserNode.connect(audioApi.destination);
-  audioEl.play();
-  drawSunburst();
-}
+var oscillator = audioApi.
 
-playButton.onclick = function() {
-  if (audioEl.paused) {
-    connectTrack();
-    console.log('play');
-  } else {
-    audioEl.pause();
-    console.log('pause');
-  }
-}
+// function connectTrack() {
+//   console.log('fired');
+//   audioTrack.connect(analyserNode);
+//   audioTrack.connect(audioApi.destination);
+//   analyserNode.connect(audioApi.destination);
+//   audioEl.play();
+//   drawSunburst();
+// }
 
-function adjustFreqData() {
-  analyserNode.getByteFrequencyData(frequencyData);
-  var removed = frequencyData.slice(0,512);
+// playButton.onclick = function() {
+//   if (audioEl.paused) {
+//     connectTrack();
+//     console.log('play');
+//   } else {
+//     audioEl.pause();
+//     console.log('pause');
+//   }
+// }
+
+// function adjustFreqData() {
+//   analyserNode.getByteFrequencyData(frequencyData);
+//   var removed = frequencyData.slice(0,512);
   
-  var newFreqs = [], prevRangeStart = 0, prevItemCount = 0;
-  // looping for my new 16 items
-  for (let j=1; j<17; j++) {
-    var pow, itemCount, rangeStart;
-    if (j%2 === 1) {
-      pow = (j-1)/2;
-    } else {
-      pow = j/2;
-    }
-    itemCount = Math.pow(2, pow);
-    if (prevItemCount === 1) {
-      rangeStart = 0;
-    } else {
-      rangeStart = prevRangeStart + (prevItemCount/2);
-    }
+//   var newFreqs = [], prevRangeStart = 0, prevItemCount = 0;
+//   // looping for my new 16 items
+//   for (let j=1; j<17; j++) {
+//     var pow, itemCount, rangeStart;
+//     if (j%2 === 1) {
+//       pow = (j-1)/2;
+//     } else {
+//       pow = j/2;
+//     }
+//     itemCount = Math.pow(2, pow);
+//     if (prevItemCount === 1) {
+//       rangeStart = 0;
+//     } else {
+//       rangeStart = prevRangeStart + (prevItemCount/2);
+//     }
 
-    var newValue = 0, total = 0;
-    for (let k=rangeStart; k<rangeStart+itemCount; k++) {
-      // add up items and divide by total
-      total += frequencyData[k];
-      newValue = total/itemCount;
-    }
-    newFreqs.push(newValue);
+//     var newValue = 0, total = 0;
+//     for (let k=rangeStart; k<rangeStart+itemCount; k++) {
+//       // add up items and divide by total
+//       total += frequencyData[k];
+//       newValue = total/itemCount;
+//     }
+//     newFreqs.push(newValue);
 
-    prevItemCount = itemCount;
-    prevRangeStart = rangeStart;
-  }
-  return newFreqs;
-}
+//     prevItemCount = itemCount;
+//     prevRangeStart = rangeStart;
+//   }
+//   return newFreqs;
+// }
 
-// enter and exit
-var width = window.innerWidth,
-    height = window.innerHeight,
-    radius = Math.min(width, height) / 2;
+// // enter and exit
+// var width = window.innerWidth,
+//     height = window.innerHeight,
+//     radius = Math.min(width, height) / 2;
 
-var svg = d3.select("svg")
-  .append("g")
-    .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
-var g = d3.select("g");
-var arcs = g.selectAll("path");
+// var svg = d3.select("svg")
+//   .append("g")
+//     .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");
+// var g = d3.select("g");
+// var arcs = g.selectAll("path");
 
-var arc = d3.svg.arc()
-    .startAngle(function(d, i) { return (i/8)*Math.PI; })
-    .endAngle(function(d, i) { return ((i+1)/8)*Math.PI; })
-    .innerRadius(function(d, i) { return radius/3; })
-    .outerRadius(function(d, i) { return d*2; });
+// var arc = d3.svg.arc()
+//     .startAngle(function(d, i) { return (i/8)*Math.PI; })
+//     .endAngle(function(d, i) { return ((i+1)/8)*Math.PI; })
+//     .innerRadius(function(d, i) { return radius/3; })
+//     .outerRadius(function(d, i) { return d*2; });
 
-function drawSunburst() {
+// function drawSunburst() {
 
-  requestAnimationFrame(drawSunburst);
-  // var newData = adjustFreqData();
-  arcs = arcs.data(adjustFreqData());
+//   requestAnimationFrame(drawSunburst);
+//   // var newData = adjustFreqData();
+//   arcs = arcs.data(adjustFreqData());
 
-  arcs
-    .enter().append("path")
-    .style("stroke", "#fff");
+//   arcs
+//     .enter().append("path")
+//     .style("stroke", "#fff");
 
-  arcs
-    .attr("d", arc)
-    .style("fill", function(d,i) { return 'hsla('+i*6+',60%,'+Math.floor(d/2.5)+'%,'+d/255+')'; })
-    .exit().remove();
-}
+//   arcs
+//     .attr("d", arc)
+//     .style("fill", function(d,i) { return 'hsla('+i*6+',60%,'+Math.floor(d/2.5)+'%,'+d/255+')'; })
+//     .exit().remove();
+// }
 
 // other audio things you can do:
 

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+
+  <script src="d3.min.js"></script>
+
+  <style type="text/css">
+    html, body {
+  padding: 0px;
+  margin: 0px; }
+
+  #screen, svg {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px; }
+
+  #screen {
+    background: black; }
+
+  .vis {border:1px solid white;}
+  </style>
+</head>
+
+<body>
+
+<div id="screen">
+  <svg>
+    <!-- define all the things here - everyone can create their own shape! -->
+    <defs>
+      <!-- turquoise gradient -->
+      <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="turqGrad">
+        <stop stop-color="hsla(173, 62%, 45%, 1)" offset="0%"></stop>
+        <stop stop-color="hsla(173, 62%, 35%, 1)" offset="100%"></stop>
+      </radialGradient>
+      <!-- purple gradient -->
+      <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="purpGrad">
+        <stop stop-color="hsla(268, 46%, 50%, 1)" offset="0%"></stop>
+        <stop stop-color="hsla(268, 46%, 40%, 1)" offset="100%"></stop>
+      </radialGradient>
+      <!-- orange gradient -->
+      <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="orangeGrad">
+        <stop stop-color="hsla(22, 97%, 55%, 1)" offset="0%"></stop>
+        <stop stop-color="hsla(22, 97%, 45%, 1)" offset="100%"></stop>
+      </radialGradient>
+      <!-- yellow gradient -->
+      <radialGradient cx="50%" cy="50%" fx="50%" fy="50%" r="50%" id="yellowGrad">
+        <stop stop-color="hsla(173, 62%, 45%, 1)" offset="0%"></stop>
+        <stop stop-color="hsla(173, 62%, 35%, 1)" offset="100%"></stop>
+      </radialGradient>
+
+      <g id="ruth" style="transform:scale(0.2);"><path d="M125.594557,232.053497 C129.171398,230.803793 132.52979,228.749431 135.388531,225.89069 L225.89069,135.388531 C236.050584,125.228637 236.046395,108.767174 225.89069,98.611469 L135.388531,8.10931039 C125.228637,-2.05058403 108.767174,-2.04639485 98.611469,8.10931039 L8.10931039,98.611469 C-2.05058403,108.771363 -2.04639485,125.232826 8.10931039,135.388531 L98.611469,225.89069 C101.470708,228.749928 104.829028,230.804177 108.405429,232.053715 L117,106 L125.594557,232.053497 L125.594557,232.053497 Z"></path></g>
+    </defs>
+
+    <!-- <use stroke="" stroke-width="" fill="url(#turqGrad)" xlink:href="ruth"></use> -->
+
+  </svg>
+</div>
+
+<audio src="galvanize.m4a" id="music-track"></audio>
+<button id="play-audio">Play/Pause Audio</button>
+
+<script type="text/javascript">
+
+var audioApi = new window.AudioContext;
+
+const audioEl = document.getElementById('music-track'),
+  playButton = document.getElementById('play-audio'),
+  audioTrack = audioApi.createMediaElementSource(audioEl);
+
+// variables
+const shapeCount = 32;
+var analyserNode = audioApi.createAnalyser(),
+    frequencyData = new Uint8Array(4096);
+
+analyserNode.fftSize = 8192;
+
+function connectTrack() {
+  console.log('fired');
+  audioTrack.connect(analyserNode);
+  audioTrack.connect(audioApi.destination);
+  analyserNode.connect(audioApi.destination);
+  audioEl.play();
+  drawSunburst();
+}
+
+playButton.onclick = function() {
+  if (audioEl.paused) {
+    connectTrack();
+    console.log('play');
+  } else {
+    audioEl.pause();
+    console.log('pause');
+  }
+}
+
+function adjustFreqData() {
+  analyserNode.getByteFrequencyData(frequencyData);
+  var removed = frequencyData.slice(0,1024);
+  
+  var newFreqs = [], prevRangeStart = 0, prevItemCount = 0;
+  // looping for my new 16 items
+  for (let j=1; j<shapeCount+1; j++) {
+    var pow, itemCount, rangeStart;
+    if (j%2 === 1) {
+      pow = (j-1)/2;
+    } else {
+      pow = j/2;
+    }
+    itemCount = Math.pow(2, pow);
+    if (prevItemCount === 1) {
+      rangeStart = 0;
+    } else {
+      rangeStart = prevRangeStart + Math.round(prevItemCount/(shapeCount/8));
+    }
+
+    var newValue = 0, total = 0;
+    for (let k=rangeStart; k<rangeStart+itemCount; k++) {
+      // add up items and divide by total
+      total += frequencyData[k];
+      newValue = total/itemCount;
+    }
+    newFreqs.push(newValue);
+
+    prevItemCount = itemCount;
+    prevRangeStart = rangeStart;
+  }
+  return newFreqs;
+}
+
+// enter and exit
+var width = window.innerWidth,
+    height = window.innerHeight,
+    radius = Math.min(width, height) / 2;
+
+var svg = d3.select("svg")
+  .attr("width", width)
+  .attr("height", height);
+var shape = svg.selectAll("use");
+
+function setXY(d,i) {
+  var remaind = i%4;
+
+  if (i%9 === 0) {
+    return {x:0*i, y:0*i};
+  } else {
+
+    switch (remaind) {
+      case 0:
+        return {x:i*10+60, y:200}
+        break;
+      case 1:
+        return {x:i*10+60, y:150}
+        break;
+      case 2:
+        return {x:i*10+60, y:100}
+        break;
+      default:
+        return {x:i*10+60, y:50}
+        break;
+    }
+
+  }
+}
+
+function drawSunburst() {
+
+  requestAnimationFrame(drawSunburst);
+  var newData = adjustFreqData();
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append('use').attr('href', '#ruth')
+    .attr("y", function(d, i) {
+      // return Math.round( (window.innerHeight/2) + (i*Math.random) );
+      var xy = setXY(d,i);
+      return xy.y;
+    })
+    .attr("x", function(d, i) {
+      // return Math.round( (window.innerWidth/2) + (i*Math.random) );
+      var xy = setXY(d,i);
+      return xy.x;
+    })
+    .attr("fill","url(#turqGrad)")
+    ;
+  
+  shape
+    // .attr("scale", function(d, i) { return (d/2)*1/2; })
+    // .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.5)"} )
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>
