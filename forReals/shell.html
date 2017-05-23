@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+
+// enter and exit
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function draw() {
+
+  requestAnimationFrame(draw);
+  shell();
+
+}
+
+const screen = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
+    minRadius: (window.innerHeight/10)/2
+  };
+
+var arc = d3.svg.arc()
+  .startAngle(function(d, i) { return (i/8)*Math.PI; })
+  .endAngle(function(d, i) { return ((i+1)/8)*Math.PI; })
+  .innerRadius(function(d, i) { return 0; })
+  .outerRadius(function(d, i) { return (i*15)+(d); });
+
+function shell() {
+  var svg = d3.select('svg'),
+    shape = svg.selectAll('path');    
+
+  var newData = adjustFreqData(32);
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append("path")
+    .attr("transform", "translate(" + screen.width / 2 + "," + screen.height * .52 + ")")
+    .style("stroke", "#222");
+
+  shape
+    .attr("d", arc)
+    .style("fill", function(d,i) { return 'hsla('+i*6+',60%,'+Math.floor(d/2.5)+'%,'+d/255+')'; })
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>

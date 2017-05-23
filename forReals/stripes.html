@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+
+function draw() {
+  requestAnimationFrame(draw);
+  stripes();
+
+}
+
+function stripes() {
+  var svg = d3.select('svg');
+  var shape = svg.selectAll('rect');
+  var newData = adjustFreqData(18);
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append('rect')
+    .attr("x", function(d, i) {
+      return 70*i;
+    })
+    .attr("y", function(d, i) {
+      // return Math.round( (window.innerWidth/2) + (i*Math.random) );
+      return 10;
+    })
+    .attr("stroke-width", 2)
+    .attr("height", "100vh");
+    
+  
+  shape
+    .attr("width", function(d, i) { return (d/1.5); })
+    .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)"} )
+    .attr("stroke", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,1)"})
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>

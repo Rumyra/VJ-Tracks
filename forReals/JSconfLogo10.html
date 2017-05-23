@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg>
+    <defs>
+      <g id="jsConfLogoOne">
+        <path d="M235,248H20.1c-7.2,0-13-5.8-13-13V20.1c0-7.2,5.8-13,13-13H235c7.2,0,13,5.8,13,13V235 C248,242.2,242.2,248,235,248z M20.1,13.6c-3.6,0-6.5,2.9-6.5,6.5V235c0,3.6,2.9,6.5,6.5,6.5H235c3.6,0,6.5-2.9,6.5-6.5V20.1 c0-3.6-2.9-6.5-6.5-6.5H20.1z"></path>
+        <path d="M157.4,216.2c3.9-3.9,26.4-26.4,40.4-40.4c12.6-12.6,12.3-30.9,0.9-42.3c-11.4-11.4-29.9-11.3-41.3,0.1 c-11.4-11.4-29.8-11.5-41.3-0.1c-11.4,11.4-11.7,29.7,0.9,42.3C131,189.8,153.5,212.2,157.4,216.2z"></path>
+      </g>
+    </defs>
+  </svg>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+// enter and exit
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function draw() {
+
+  requestAnimationFrame(draw);
+  jsConfLogo10();
+
+}
+
+function jsConfLogo10() {
+  var svg = d3.select('svg');
+  var shape = svg.selectAll('use');
+
+  var newData = adjustFreqData(12);
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append('use').attr('href', '#jsConfLogoOne')
+    .style("transform", function(d, i) {
+      return "translate("+120*(i%10)+"px, "+90*(i%6)+"px)";
+    })
+    .attr("stroke", "white")
+    .attr("stroke-width", 2);
+  
+  shape
+    .attr("fill", function(d,i) {return "hsla("+i*30+",60%,70%,"+d/128+")"} )
+    .exit().remove();
+
+}
+
+</script>
+</body>
+
+
+</html>

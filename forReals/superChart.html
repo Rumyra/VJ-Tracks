@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <svg></svg>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+
+// enter and exit
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function draw() {
+
+  requestAnimationFrame(draw);
+  superChart();
+
+}
+
+const screen = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+    maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
+    minRadius: (window.innerHeight/10)/2
+  };
+
+function superChart() {
+  var svg = d3.select('svg');
+  var shape = svg.selectAll('circle'),
+    shape2 = svg.selectAll('line');
+
+  var newData = adjustFreqData(16);
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append('circle')
+    .attr("cy", function(d, i) {
+      return Math.round(window.innerHeight/2 + (screen.maxRadius*Math.sin((2*i*Math.PI)/16)) );
+    })
+    .attr("cx", function(d, i) {
+      return Math.round(window.innerWidth/2 + (screen.maxRadius*Math.cos((2*i*Math.PI)/16)) );
+    });
+  
+  shape
+    .attr("r", function(d) { return d/2; })
+    .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)"})
+    .exit().remove();
+
+  shape2 = shape2.data(newData);
+
+  shape2
+    .enter().append('line')
+    .attr("x1", function(d, i) {
+      return Math.round(window.innerWidth/2 + (screen.maxRadius*Math.cos((2*i*Math.PI)/16)) );
+    })
+    .attr("y1", function(d, i) {
+      return Math.round(window.innerHeight/2 + (screen.maxRadius*Math.sin((2*i*Math.PI)/16)) );
+    })
+    .attr("stroke-width","2")
+    .attr("stroke","hsla(320,60%,100%,0.9)");
+  shape2
+    .attr("x2",function(d, i) {
+      return Math.round(window.innerWidth/2 + ( (screen.maxRadius-d)*Math.cos((2*i*Math.PI)/16)) );
+    })
+    .attr("y2",function(d, i) {
+      return Math.round(window.innerHeight/2 + ( (screen.maxRadius-d)*Math.sin((2*i*Math.PI)/16)) );
+    })
+    .exit().remove();
+  
+  // shape
+  //   .attr("stroke-width", function(d, i) { return (d/32); })
+  //   .attr("r", function(d, i) { return (16+d/8); })
+  //   // .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.5)"} )
+  //   .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>

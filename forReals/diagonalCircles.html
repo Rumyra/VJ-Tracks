@@ -34,31 +34,28 @@
 <script type="text/javascript">
 
 
-var shapeSettings = {
-
-  shapes: ['circle'],
-
-  shapeCount: 32
-
-};
 
 // enter and exit
-var svg = d3.select('svg');
-var shape = svg.selectAll('circle');
+// var svg = d3.select('svg');
+// var shape = svg.selectAll('circle');
 
 //<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
 function draw() {
 
   requestAnimationFrame(draw);
-  var newData = adjustFreqData();
 
-  shape = shape.data(newData);
+  diagonalCircles();
   
-  diagonalCircles(shape);
-
 }
 
-function diagonalCircles(shape) {
+function diagonalCircles() {
+
+  var svg = d3.select('svg');
+  var shape = svg.selectAll('circle');
+  var newData = adjustFreqData(16);
+
+  shape = shape.data(newData);
+
   shape
     .enter().append('circle')
     .attr("cy", function(d, i) {
@@ -74,7 +71,11 @@ function diagonalCircles(shape) {
     .attr("r", function(d, i) { return (d/2)*i/2; })
     .attr("fill", function(d,i) {return "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.5)"} )
     .exit().remove();
+
+  return this;
+
 }
+
 
 </script>
 </body>

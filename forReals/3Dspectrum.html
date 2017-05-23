@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="aframe.min.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <!-- <svg></svg> -->
+  <a-scene>
+    <!-- <a-box color="red" rotation="0 45 45" scale="1 1 1" position="0 2 -5"></a-box> -->
+  </a-scene>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+
+// enter and exit
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function draw() {
+
+  requestAnimationFrame(draw);
+  spectrum();
+
+}
+
+function spectrum() {
+
+  var aScene = d3.select('a-scene');
+  var shape = aScene.selectAll('a-box');
+  var newData = adjustFreqData(6);
+
+  shape = shape.data(newData);
+
+  shape
+    .enter().append('a-box')
+    .attr("rotation", "0 45 45");
+  
+  shape
+    .attr("scale", function(d,i) {return d/125+"1 1";} )
+    .attr("position", function(d, i) { return i+" 2 -5"; })
+    .attr("color", function(d,i) {return "hsl("+Math.round( i*(20+(d/255)) )+",50%,80%)"} )
+    .exit().remove();
+}
+
+</script>
+</body>
+
+
+</html>
