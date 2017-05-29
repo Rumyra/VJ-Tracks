@@ -53,7 +53,8 @@ function spectrum() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
-  var newData = adjustFreqData(48);
+  var frequencies = adjustFreqData(48);
+  var newData = frequencies.newFreqs;
   
 
   for(var i=0;i<newData.length;i++) {
