@@ -69,7 +69,8 @@ function concentric2() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
-  var newData = adjustFreqData(16);
+  var frequencies = adjustFreqData(16);
+  var newData = frequencies.newFreqs;
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];

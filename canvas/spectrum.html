@@ -55,12 +55,14 @@ function spectrum() {
 
   var frequencies = adjustFreqData(48);
   var newData = frequencies.newFreqs;
+  var lowFreqs = frequencies.lowFreqs;
+  console.log(lowFreqs);
   
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)";
+    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,"+lowFreqs+"%,0.8)";
     ctx.fillRect(
       30 * i,
       10,

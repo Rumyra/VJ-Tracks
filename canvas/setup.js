@@ -61,9 +61,10 @@ function adjustFreqData(shapeNo) {
 
   function avFreqs(arrPart) {
     var arrPart = arrPart;
-    var avValue, totalVal;
+    var avValue;
+    var totalVal = 0;
     for (let l=0; l<arrPart.length; l++) {
-      totalVal += arrPart[i];
+      totalVal += arrPart[l];
     }
     avValue = Math.floor(totalVal/arrPart.length);
     return avValue;
