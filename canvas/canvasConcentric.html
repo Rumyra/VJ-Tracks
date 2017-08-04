@@ -41,24 +41,28 @@
 function draw() {
 
   requestAnimationFrame(draw);
-  concentric2();
+  concentric();
 
 }
 
 const screen = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    centerX: window.innerWidth/2,
-    centerY: window.innerHeight/2,
-    maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
-    minRadius: (window.innerHeight/10)/2
-  };
+  width: window.innerWidth,
+  height: window.innerHeight,
+  centerX: window.innerWidth/2,
+  centerY: window.innerHeight/2,
+  maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
+  minRadius: (window.innerHeight/10)/2
+};
+// Converts from degrees to radians.
+Math.radians = function(degrees) {
+  return degrees * Math.PI / 180;
+};
 
-var conArc2 = d3.svg.arc()
-  .startAngle(0)
-  .endAngle(function(d, i) { return d/32; })
-  .innerRadius(function(d, i) { return i*32; })
-  .outerRadius(function(d, i) { return (i+1)*24; });
+// var conArc2 = d3.svg.arc()
+//   .startAngle(0)
+//   .endAngle(function(d, i) { return d/32; })
+//   .innerRadius(function(d, i) { return i*32; })
+//   .outerRadius(function(d, i) { return (i+1)*24; });
 
 
  var canvas = document.querySelector('canvas');
@@ -66,7 +70,7 @@ var conArc2 = d3.svg.arc()
     canvas.height = screen.height;
   var ctx = canvas.getContext('2d');
 
-function concentric2() {
+function concentric() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
@@ -77,11 +81,12 @@ function concentric2() {
     var d = newData[i];
 
     ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)";
+    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,1)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;
-    ctx.arc(screen.centerX, screen.centerY, i*32, 0, d/32);
-    // ctx.fill();
+    ctx.arc(screen.centerX, screen.centerY, i*24, 0-(Math.radians(90)), d/32-(Math.radians(90)) );
+    ctx.fill();
     ctx.stroke();
   }
 
