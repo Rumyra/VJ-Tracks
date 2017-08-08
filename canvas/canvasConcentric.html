@@ -80,27 +80,16 @@ function concentric() {
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)";
     ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,1)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;
     ctx.arc(screen.centerX, screen.centerY, i*24, 0-(Math.radians(90)), d/32-(Math.radians(90)) );
-    ctx.fill();
     ctx.stroke();
+
+    
   }
 
-  // shape = shape.data(newData);
-
-  // shape
-  //   .enter().append("path")
-  //   .attr("transform", "translate(" + screen.width / 2 + "," + screen.height * .52 + ")")
-  //   .style("stroke", "#222");
-
-  // shape
-  //   .attr("d", conArc2)
-  //   .style("fill", function(d,i) { return 'hsla('+i*16+',60%,60%,'+d/255+')'; })
-  //   .exit().remove();
 }
 
 </script>

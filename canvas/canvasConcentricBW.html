@@ -41,29 +41,36 @@
 function draw() {
 
   requestAnimationFrame(draw);
-  concentric2();
+  concentric();
 
 }
 
 const screen = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    centerX: window.innerWidth/2,
-    centerY: window.innerHeight/2,
-    maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
-    minRadius: (window.innerHeight/10)/2
-  };
+  width: window.innerWidth,
+  height: window.innerHeight,
+  centerX: window.innerWidth/2,
+  centerY: window.innerHeight/2,
+  maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
+  minRadius: (window.innerHeight/10)/2
+};
 // Converts from degrees to radians.
 Math.radians = function(degrees) {
   return degrees * Math.PI / 180;
 };
 
-var canvas = document.querySelector('canvas');
-  canvas.width = screen.width;
-  canvas.height = screen.height;
-var ctx = canvas.getContext('2d');
+// var conArc2 = d3.svg.arc()
+//   .startAngle(0)
+//   .endAngle(function(d, i) { return d/32; })
+//   .innerRadius(function(d, i) { return i*32; })
+//   .outerRadius(function(d, i) { return (i+1)*24; });
 
-function concentric2() {
+
+ var canvas = document.querySelector('canvas');
+    canvas.width = screen.width;
+    canvas.height = screen.height;
+  var ctx = canvas.getContext('2d');
+
+function concentric() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
@@ -73,25 +80,16 @@ function concentric2() {
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.6)";
+    // ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)";
+    ctx.strokeStyle = "hsla(0,50%,100%,1)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;
     ctx.arc(screen.centerX, screen.centerY, i*24, 0-(Math.radians(90)), d/32-(Math.radians(90)) );
-    ctx.fill();
+    // ctx.fill();
+    ctx.stroke();
   }
 
-  // shape = shape.data(newData);
-
-  // shape
-  //   .enter().append("path")
-  //   .attr("transform", "translate(" + screen.width / 2 + "," + screen.height * .52 + ")")
-  //   .style("stroke", "#222");
-
-  // shape
-  //   .attr("d", conArc2)
-  //   .style("fill", function(d,i) { return 'hsla('+i*16+',60%,60%,'+d/255+')'; })
-  //   .exit().remove();
 }
 
 </script>
