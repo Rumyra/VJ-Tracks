@@ -55,10 +55,13 @@
       'BoxGeometry', [5, 5, 5],
       'MeshPhongMaterial', [{
         color: 0xff0000,
-        shading: T.FlatShading,
+        shading: T.SmoothShading,
+        specular: 0xffffff,
+        shininess: 60,
       }]
     );
-    cube.position.set((i%8)*10, Math.round(i/8)*10, -100);
+    cube.position.set((i%8)*10, Math.floor(i/8)*10, -50);
+    cube.material.color.setHSL(i/50,0.8,0.6);
     scene.add(cube);
     shapes.push(cube); 
   }
@@ -76,15 +79,17 @@
       var d = newData[i];
       var s = shapes[i];
 
-      // s.rotation.x += d/25500;
-      // s.rotation.y += d/25500;
+      s.rotation.x += d/2550;
+      s.rotation.y += d/2550;
 
       // s.position.y -= d/125;
       // s.position.x -= d/125;
 
-      s.scale.set( (5*d/255)+1, (5*d/255)+1, (5*d/255)+1 );
+      s.scale.set( (5*d/2550)+1, (5*d/2550)+1, (5*d/2550)+1 );
 
     }
+
+    // camera.position.set
 
     // cube.rotation.x += 0.01;
     // cube.rotation.y += 0.01;
