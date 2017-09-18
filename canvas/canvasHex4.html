@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!--meta content-->
+  
+  <meta name="author" content="Ruth John (@rumyra)">
+  <meta name="dcterms.rightsHolder" content="Built by Ruth John, United Kingdom, 2016">
+  <title>VJ Tracks | Rumyra</title>
+  <meta name="description" content="">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="d3.min.js"></script>
+  <script src="audio.js"></script>
+
+  <!--include if you want modenizr (rest of scripts just before </body>)
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  -->
+</head>
+
+<body>
+
+<div id="screen">
+  <canvas></canvas>
+</div>
+
+<script type="text/javascript" src="setup.js"></script>
+<script type="text/javascript">
+
+
+// enter and exit
+
+
+//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
+function draw() {
+
+  requestAnimationFrame(draw);
+  hex();
+
+}
+
+const screen = {
+  width: window.innerWidth,
+  height: window.innerHeight,
+  centerX: window.innerWidth/2,
+  centerY: window.innerHeight/2,
+  maxRadius: (window.innerHeight-(window.innerHeight/6))/2,
+  minRadius: (window.innerHeight/10)/2
+};
+// Converts from degrees to radians.
+Math.radians = function(degrees) {
+  return degrees * Math.PI / 180;
+};
+
+function drawHex(ctx, sideLength, startX, startY) {
+
+  // maths mother fucker
+  const moveX = Math.sin(Math.radians(30))*sideLength;
+  const moveY = Math.cos(Math.radians(30))*sideLength;
+
+  // I actually want the origin to be in the centre
+  var startX = startX-(sideLength/2);
+  var startY = startY-moveY;
+
+  ctx.beginPath(); // instigate
+  ctx.moveTo(startX, startY); // start at pos
+  ctx.lineTo(startX+sideLength, startY); // go right along top (we're drawing clockwise from top left)
+
+  ctx.lineTo(startX+sideLength+moveX, startY+moveY);
+  ctx.lineTo(startX+sideLength, startY+(moveY*2));
+  ctx.lineTo(startX, startY+(moveY*2));
+  ctx.lineTo(startX-moveX, startY+moveY);
+  ctx.lineTo(startX, startY);
+  ctx.closePath();
+}
+
+ var canvas = document.querySelector('canvas');
+    canvas.width = screen.width;
+    canvas.height = screen.height;
+  var ctx = canvas.getContext('2d');
+
+function hex() {
+  ctx.fillStyle = "#000";
+  ctx.fillRect(0,0,canvas.width, canvas.height);
+
+  var frequencies = adjustFreqData(128);
+  var newData = frequencies.newFreqs;
+
+  for(var i=0;i<newData.length;i++) {
+    var d = newData[i];
+
+    ctx.globalCompositeOperation = "hard-light";
+
+    // ctx.beginPath();
+    drawHex(ctx, d, (i%24)*80, (i%14)*50);
+    ctx.strokeStyle = "hsla("+(i*3)+",60%,80%,1)";
+    ctx.fillStyle = "hsla("+(i*3)+",60%,"+d/2+"%,0.4)";
+    ctx.lineWidth = 2;
+    // ctx.arc(x, y, d/(j*5), 0, Math.PI*2);
+    ctx.fill();
+    ctx.stroke();
+
+  }
+
+}
+
+</script>
+</body>
+
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title></title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background: #111;
+    }
+  </style>
+</head>
+<body>
+
+<script src="js/lib/three.min.js"></script>
+<script src="js/lib/OrbitControls.js"></script>
+<script src="js/core.js"></script>
+<script src="js/setup.js"></script>
+
+<script type="text/javascript">
+
+// (function(window) {
+//   'use strict';
+  var core = window.core;
+  var T = window.THREE;
+
+  core.init();
+  core.addGround();
+
+  // lights
+  var ambientLight = new T.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+
+  var light = new T.DirectionalLight(0xffffff, 1);
+  light.color.setHSL(0.1, 1, 0.95);
+  light.position.set(0, 20, -10);
+  light.position.multiplyScalar(40);
+
+  scene.add(light);
+
+  // put all of the demo related stuff here
+
+  // amount of elements in freq array - use to create shapes
+  var totalEls = 32;
+  var shapes = [];
+
+  for (var i=0; i<totalEls; i++) {
+    var cube = core.build(
+      'BoxGeometry', [5, 5, 5],
+      'MeshPhongMaterial', [{
+        color: 0xff0000,
+        shading: T.FlatShading,
+      }]
+    );
+    cube.position.set((i%8)*10, Math.round(i/8)*10, -100);
+    scene.add(cube);
+    shapes.push(cube); 
+  }
+  
+
+  // var bobDirection = "up";
+
+  // render loop
+  var draw = function() {
+
+    var frequencies = adjustFreqData(32);
+    var newData = frequencies.newFreqs;
+
+    for(var i=0;i<newData.length;i++) {
+      var d = newData[i];
+      var s = shapes[i];
+
+      // s.rotation.x += d/25500;
+      // s.rotation.y += d/25500;
+
+      // s.position.y -= d/125;
+      // s.position.x -= d/125;
+
+      s.scale.set( (5*d/255)+1, (5*d/255)+1, (5*d/255)+1 );
+
+    }
+
+    // cube.rotation.x += 0.01;
+    // cube.rotation.y += 0.01;
+    // // Bobbing up and down
+    // if (bobDirection == "up") {
+    //   cube.position.y += 0.25;
+    //   if (cube.position.y >= 20) {
+    //     bobDirection = "down";
+    //   }
+    // } else {
+    //   cube.position.y -= 0.125;
+    //   if (cube.position.y <= 1) {
+    //     bobDirection = "up";
+    //   }
+    // }
+
+
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(draw);
+  };
+
+  // Kick it off
+  // update();
+// }(window));
+
+</script>
+</body>
+</html>

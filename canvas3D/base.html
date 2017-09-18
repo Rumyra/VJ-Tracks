@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title></title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background: #111;
+    }
+  </style>
+</head>
+<body>
+
+<script src="js/lib/three.min.js"></script>
+<script src="js/lib/OrbitControls.js"></script>
+<script src="js/core.js"></script>
+<script src="js/setup.js"></script>
+
+<script type="text/javascript">
+
+(function(window) {
+  'use strict';
+  var core = window.core;
+  var T = window.THREE;
+
+  core.init();
+  core.addGround();
+
+  var ambientLight = new T.AmbientLight(0xffffff, .8);
+  scene.add(ambientLight);
+
+  // put all of the demo related stuff here
+
+
+
+  // Render loop
+  var update = function() {
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(update);
+  };
+
+  // Kick it off
+  update();
+}(window));
+
+</script>
+</body>
+</html>
