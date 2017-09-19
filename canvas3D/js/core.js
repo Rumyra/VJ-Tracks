@@ -87,7 +87,7 @@ var core = function(window) {
     renderer.shadowMap.soft = true;
     document.body.appendChild(renderer.domElement);
     window.controls = setControllerMethod(camera, renderer.domElement);
-    camera.position.set(0, 0, 50);
+    camera.position.set(0, 0, 100);
     window._renderer = renderer;
     window.addEventListener('resize', function() {
       resizeRenderer();

@@ -47,7 +47,14 @@
   // put all of the demo related stuff here
 
   // amount of elements in freq array - use to create shapes
-  var totalEls = 32;
+  var totalEls = 192;
+  // could this be a function
+  // var grid = {
+  //   xDistrib: 8,
+  //   yDistrib: 4,
+  //   zDistrib: 6,
+  //   xOffset: 
+  // }
   var shapes = [];
 
   for (var i=0; i<totalEls; i++) {
@@ -60,7 +67,13 @@
         shininess: 60,
       }]
     );
-    cube.position.set((i%8)*10, Math.floor(i/8)*10, -50);
+    cube.position.set(
+      // x = i%amount-half total width
+      ((i%8)*10)-(4*10),
+      // y = i%amount needed to make yDistrib - half total height
+      (Math.floor((i%8)/8)*10),
+      // z = i%amount needed to make zDistrib - half total depth
+      ( Math.floor(i/32)*10 ) );
     cube.material.color.setHSL(i/50,0.8,0.6);
     scene.add(cube);
     shapes.push(cube); 
@@ -72,7 +85,7 @@
   // render loop
   var draw = function() {
 
-    var frequencies = adjustFreqData(32);
+    var frequencies = adjustFreqData(totalEls);
     var newData = frequencies.newFreqs;
 
     for(var i=0;i<newData.length;i++) {
