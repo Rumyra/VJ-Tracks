@@ -31,7 +31,7 @@
   var T = window.THREE;
 
   core.init();
-  core.addGround();
+  // core.addGround();
 
   // lights
   var ambientLight = new T.AmbientLight(0xffffff, 0.5);
@@ -48,6 +48,11 @@
 
   // amount of elements in freq array - use to create shapes
   var totalEls = 192;
+  var xDistrib = 8;
+  var yDistrib = 4;
+  var zDistrib = 6;
+  var gap = 10;
+  var shapeSize = 5;
   // could this be a function
   // var grid = {
   //   xDistrib: 8,
@@ -55,11 +60,11 @@
   //   zDistrib: 6,
   //   xOffset: 
   // }
-  var shapes = [];
+  var shapes = [ [], [] ];
 
   for (var i=0; i<totalEls; i++) {
-    var cube = core.build(
-      'BoxGeometry', [5, 5, 5],
+    var cubeOne = core.build(
+      'BoxGeometry', [shapeSize, shapeSize, shapeSize],
       'MeshPhongMaterial', [{
         color: 0xff0000,
         shading: T.SmoothShading,
@@ -67,42 +72,72 @@
         shininess: 60,
       }]
     );
-    cube.position.set(
-      // x = i%amount-half total width
-      ((i%8)*10)-(4*10),
-      // y = i%amount needed to make yDistrib - half total height
-      (Math.floor((i%8)/8)*10),
-      // z = i%amount needed to make zDistrib - half total depth
-      ( Math.floor(i/32)*10 ) );
-    cube.material.color.setHSL(i/50,0.8,0.6);
-    scene.add(cube);
-    shapes.push(cube); 
+    var cubeTwo = core.build(
+      'BoxGeometry', [shapeSize, shapeSize, shapeSize],
+      'MeshPhongMaterial', [{
+        color: 0xff0000,
+        shading: T.SmoothShading,
+        specular: 0xffffff,
+        shininess: 60,
+      }]
+    );
+
+    var xPos = ((i%xDistrib)*gap)-( ((xDistrib/2)*gap)-(gap/2) );
+    var yPos = ( ( Math.floor(i/xDistrib) % yDistrib )*10 )-(yDistrib/2*gap) ;
+    var zPos = (Math.floor(Math.floor(i/xDistrib) / yDistrib)*10) ;
+    // console.log(xPos,yPos,zPos);
+
+    cubeOne.position.set(xPos, yPos, zPos);
+    cubeTwo.position.set(xPos, yPos, zPos);
+
+    cubeOne.material.color.setHSL(i/50,0.8,0.6);
+    cubeTwo.material.color.setHSL((i/50)+0.1,0.8,0.6);
+    scene.add(cubeOne);
+    scene.add(cubeTwo);
+
+    shapes[0].push(cubeOne); 
+    shapes[1].push(cubeTwo);
   }
   
 
-  // var bobDirection = "up";
+  
 
   // render loop
   var draw = function() {
 
+    // get audio data
     var frequencies = adjustFreqData(totalEls);
     var newData = frequencies.newFreqs;
+    var midFreqs = frequencies.midFreqs;
+    var lowFreqs = frequencies.lowFreqs;
 
     for(var i=0;i<newData.length;i++) {
       var d = newData[i];
-      var s = shapes[i];
+      var sOne = shapes[0][i];
+      var sTwo = shapes[1][i];
 
-      s.rotation.x += d/2550;
-      s.rotation.y += d/2550;
+      sOne.rotation.x += d/3000;
+      sOne.rotation.y += d/3000;
 
       // s.position.y -= d/125;
       // s.position.x -= d/125;
 
-      s.scale.set( (5*d/2550)+1, (5*d/2550)+1, (5*d/2550)+1 );
+      sTwo.scale.set( (4*d/2000)+1, (4*d/2000)+1, (4*d/2000)+1 );
 
     }
 
-    // camera.position.set
+    // console.log(midFreqs);
+    if (midFreqs > 80) {
+      document.querySelector('canvas').style.webkitFilter = 'invert(100%)';
+    } else if (midFreqs < 81) {
+      document.querySelector('canvas').style.webkitFilter = 'invert(0%)';
+    }
+
+    if (lowFreqs > 80) {
+      camera.position.set(0,0,(lowFreqs/100)+100);
+    } else if (lowFreqs < 81) {
+      camera.position.set(0,0,100);
+    }
 
     // cube.rotation.x += 0.01;
     // cube.rotation.y += 0.01;
