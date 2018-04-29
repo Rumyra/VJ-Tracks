@@ -80,7 +80,7 @@ function concentric() {
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,1)";
+    ctx.strokeStyle = "hsla("+Math.round( i*10+100 )+",50%,80%,1)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;

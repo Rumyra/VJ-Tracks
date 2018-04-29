@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title></title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      background: #111;
+    }
+    canvas {
+      background: black;
+      border: 2px solid purple;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="screen"></canvas>
+
+<script src="../setup.js"></script>
+
+<script id="2d-vertex-shader" type="notjs">
+// NEW change this to take an array of x,y coords in percent
+// x & y coord space goes from -1 -> 1 this can be cool as I'm always focussed around the center
+
+  // out coords in -1 -> 1 form
+  attribute vec2 a_position;
+
+  // our var we'll create and set for x & y
+  uniform vec2 u_resolution;
+
+  void main() {
+
+    // divide percentage value (u_resolution) by 50 to get a value between 0 & 2
+    vec2 perToClipCoord = (u_resolution / 50.0) - 1.0;
+
+    // then minus 1 to get a value between -1 & 1
+    // vec2 perToClipCoord = perToClipOne - 1.0;
+
+    gl_Position = vec4(perToClipCoord, 0, 1);
+
+
+  }
+
+</script>
+
+<script id="2d-fragment-shader" type="notjs">
+// our fragment shader - we need one of these
+  // fragment shaders don't have a default precision so we need
+  // to pick one. mediump is a good default
+  precision mediump float;
+
+  void main() {
+    // gl_FragColor is a special variable a fragment shader
+    // is responsible for setting
+    gl_FragColor = vec4(1, 0, 0.5, 1); // return redish-purple
+  }
+
+</script>
+
+<script type="text/javascript">
+
+  const projctn = document.querySelector('#screen');
+  projctn.width = window.innerWidth;
+  projctn.height = window.innerHeight;
+
+  const gl = projctn.getContext('webgl');
+
+  // create two shaders
+  var vertexShaderSource = document.getElementById("2d-vertex-shader").text;
+  var fragmentShaderSource = document.getElementById("2d-fragment-shader").text;
+
+  var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+  var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+  // load into program
+  var program = createProgram(gl, vertexShader, fragmentShader);
+
+  // need to supplu data to our GLSA program
+  // look up out atrribute (in initialisation not render loop)
+  var positionAttributeLocation = gl.getAttribLocation(program, "a_position");
+
+  // NEW get the location of our percentage uniform
+  var resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
+
+  // create a buffer for data
+  var positionBuffer = gl.createBuffer();
+  // this is our bind point - I don't get it yet, but I might
+  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+  // NEW coords using percent... then put data in buffer, reference is bind point
+  // three 2d points
+  var positions = [
+    50, 50,
+    50, 75,
+    85, 50,
+  ];
+  // passing lots of data(?) also static draw says we're not going to move it much
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+  // ^^ all initialisation code
+
+  // render loop stuff
+  // set canvas size
+  gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+  // Clear the canvas
+  gl.clearColor(0, 0, 0, 0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+
+  // Tell it to use our program (pair of shaders)
+  gl.useProgram(program);
+
+  // tell webgl to use the data we set up earlier
+  // turn attrib on
+  gl.enableVertexAttribArray(positionAttributeLocation);
+  // pull the data out
+  // Bind the position buffer.
+  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+  // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
+  var size = 2;          // 2 components per iteration
+  var type = gl.FLOAT;   // the data is 32bit floats
+  var normalize = false; // don't normalize the data
+  var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
+  var offset = 0;        // start at the beginning of the buffer
+  gl.vertexAttribPointer(
+      positionAttributeLocation, size, type, normalize, stride, offset)
+
+  // NEW sets uniform on current program
+  // set the resolution
+  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
+
+  var primitiveType = gl.TRIANGLES;
+  var offset = 0;
+  var count = 3;
+  gl.drawArrays(primitiveType, offset, count);
+
+
+
+// function that will create a shader, upload the GLSL source, and compile the shader
+function createShader(gl, type, source) {
+  var shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  if (success) {
+    return shader;
+  }
+
+  console.log(gl.getShaderInfoLog(shader));
+  gl.deleteShader(shader);
+}
+// link shaders into a program
+function createProgram(gl, vertexShader, fragmentShader) {
+  var program = gl.createProgram();
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+  gl.linkProgram(program);
+  var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (success) {
+    return program;
+  }
+
+  console.log(gl.getProgramInfoLog(program));
+  gl.deleteProgram(program);
+}
+
+</script>
+</body>
+</html>

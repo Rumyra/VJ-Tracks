@@ -41,7 +41,7 @@
 function draw() {
 
   requestAnimationFrame(draw);
-  dots();
+  circles4();
 
 }
 
@@ -70,7 +70,7 @@ Math.radians = function(degrees) {
     canvas.height = screen.height;
   var ctx = canvas.getContext('2d');
 
-function dots() {
+function circles4() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
@@ -79,16 +79,26 @@ function dots() {
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
-    var transparency = d/200;
+    var transparency = i===0 ? 1 : 0;
+    var time = audioApi.currentTime;
 
-    ctx.strokeStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
-    ctx.fillStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
-    ctx.globalCompositeOperation = "hard-light";
+    ctx.save();
+    ctx.translate(screen.centerX, screen.centerY);
+
+
+    ctx.strokeStyle = "hsla("+(i*10)+",50%,100%,"+transparency+")";
+    ctx.fillStyle = "hsla("+(i*10)+",50%,100%,"+transparency+")";
+    // ctx.globalCompositeOperation = "hard-light";
+
+    
+    ctx.rotate(( (2 * Math.PI) / i*3) * time+(d/200));
+    ctx.translate(10, 0);
     ctx.beginPath();
-    ctx.lineWidth = 15;
-    ctx.arc(screen.centerX, screen.centerY, i*64, 0, Math.PI*2);
+    ctx.lineWidth = i*2;
+    ctx.arc(0, i*10, 180+(i*5)+(d/2), 0, Math.PI*2);
     ctx.fill();
     ctx.stroke();
+    ctx.restore();
 
   }
 

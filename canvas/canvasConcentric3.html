@@ -80,8 +80,8 @@ function concentric3() {
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.5)";
-    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.8)";
+    ctx.fillStyle = "hsla("+Math.round( i*15+100 )+",50%,80%,0.4)";
+    ctx.strokeStyle = "hsla("+Math.round( i*15+100 )+",50%,80%,0.8)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;

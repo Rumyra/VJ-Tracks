@@ -41,7 +41,7 @@
 function draw() {
 
   requestAnimationFrame(draw);
-  dots();
+  concentric3();
 
 }
 
@@ -65,31 +65,29 @@ Math.radians = function(degrees) {
 //   .outerRadius(function(d, i) { return (i+1)*24; });
 
 
- var canvas = document.querySelector('canvas');
-    canvas.width = screen.width;
-    canvas.height = screen.height;
-  var ctx = canvas.getContext('2d');
+var canvas = document.querySelector('canvas');
+  canvas.width = screen.width;
+  canvas.height = screen.height;
+var ctx = canvas.getContext('2d');
 
-function dots() {
+function concentric3() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
-  var frequencies = adjustFreqData(8);
+  var frequencies = adjustFreqData(32);
   var newData = frequencies.newFreqs;
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
-    var transparency = d/200;
 
-    ctx.strokeStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
-    ctx.fillStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
+    ctx.fillStyle = "hsla("+Math.round( i*10+100 )+",50%,80%,0.3)";
+    ctx.strokeStyle = "hsla("+Math.round( i*10+100 )+",50%,80%,0.8)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;
-    ctx.arc(screen.centerX, screen.centerY, i*64, 0, Math.PI*2);
+    ctx.arc(screen.centerX, screen.centerY, i*24, (0-(Math.radians(90)))+(Math.radians(i*10)), (d/32-(Math.radians(90)))+(Math.radians(i*10)) );
     ctx.fill();
     ctx.stroke();
-
   }
 
 }

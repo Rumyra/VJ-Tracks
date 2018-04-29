@@ -16,7 +16,8 @@
   <meta name="description" content="">
   <link rel="stylesheet" href="style.css">
 
-  <script src="d3.min.js"></script>
+  <!-- <script src="d3.min.js"></script> -->
+  <script src="vizDraw.js"></script>
   <script src="audio.js"></script>
 
   <!--include if you want modenizr (rest of scripts just before </body>)
@@ -33,15 +34,13 @@
 <script type="text/javascript" src="setup.js"></script>
 <script type="text/javascript">
 
+console.log(VizDraw.distribute(32, 0.5));
+console.log(VizDraw.screen.width);
 
-// enter and exit
-
-
-//<line x1="20" y1="100" x2="100" y2="20" stroke-width="2" stroke="black"/>
 function draw() {
 
-  requestAnimationFrame(draw);
-  dots();
+  // requestAnimationFrame(draw);
+  // dots();
 
 }
 
@@ -74,19 +73,23 @@ function dots() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
-  var frequencies = adjustFreqData(32);
+  var frequencies = adjustFreqData(64);
   var newData = frequencies.newFreqs;
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
     var transparency = d/200;
 
-    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,"+transparency+")";
+    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,1)";
+    ctx.fillStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,"+transparency+")";
     ctx.globalCompositeOperation = "hard-light";
+
     ctx.beginPath();
-    ctx.lineWidth = 15;
-    ctx.arc(screen.centerX, screen.centerY, i*24, 0, Math.PI*2);
+    ctx.arc((i%8)*180, Math.floor((i/10))*150, d, 0, 2 * Math.PI, false);
+    ctx.fill();
+    ctx.lineWidth = 2;
     ctx.stroke();
+    ctx.closePath();
 
   }
 

@@ -18,22 +18,21 @@ function createAnalyserNode(audioSource) {
 // getUserMedia success callback -> pipe audio stream into audio API
 function gotStream(stream) {
     // Create an audio input from the stream.
-    console.log('got stream');
     var audioSource = audioApi.createMediaStreamSource(stream);
     createAnalyserNode(audioSource);
-    draw();
+    // draw();
 }
 
 function adjustFreqData(shapeNo) {
   analyserNode.getByteFrequencyData(frequencyData);
   var removed = frequencyData.slice(0,1024);
-  
+
   var newFreqs = [], lowFreqs, midFreqs, highFreqs, prevRangeStart = 0, prevItemCount = 0;
 
   // set up the maxPow & thus ratio based on shapeCount
   var maxPow = Math.pow(2,shapeNo/2);
   var ratio = 1024/maxPow;
-  
+
   // looping - get values for new array based on shapeCount
   for (let j=1; j<shapeNo+1; j++) {
     var itemCount, rangeStart;
@@ -74,7 +73,7 @@ function adjustFreqData(shapeNo) {
   lowFreqs = avFreqs(newFreqs.slice(0,oneThird));
   midFreqs = avFreqs(newFreqs.slice(oneThird, oneThird*2));
   highFreqs = avFreqs(newFreqs.slice(oneThird*2));
-  
+
   return {
     newFreqs: newFreqs,
     lowFreqs: lowFreqs,

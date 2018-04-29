@@ -41,7 +41,7 @@
 function draw() {
 
   requestAnimationFrame(draw);
-  dots();
+  sin();
 
 }
 
@@ -50,7 +50,7 @@ const screen = {
   height: window.innerHeight,
   centerX: window.innerWidth/2,
   centerY: window.innerHeight/2,
-  maxRadius: (window.innerHeight-(window.innerWidth/6))/2,
+  maxRadius: (window.innerHeight-(window.innerHeight/6))/2,
   minRadius: (window.innerHeight/10)/2
 };
 // Converts from degrees to radians.
@@ -58,35 +58,50 @@ Math.radians = function(degrees) {
   return degrees * Math.PI / 180;
 };
 
-// var conArc2 = d3.svg.arc()
-//   .startAngle(0)
-//   .endAngle(function(d, i) { return d/32; })
-//   .innerRadius(function(d, i) { return i*32; })
-//   .outerRadius(function(d, i) { return (i+1)*24; });
+// taken from https://jsfiddle.net/hashem/Lw41nwx7/
 
+function drawSin(time, context) {
+
+  var unit = 100;
+
+  // Set the initial x and y, starting at 0,0 and translating to the origin on
+  // the canvas.
+  var x = time;
+  var y = Math.sin(x);
+  context.moveTo(screen.width/4, unit*y+screen.height/2);
+  
+  // Loop to draw segments
+  for (i = screen.width/4; i <= screen.width; i += 10) {
+      x = time+(-screen.width/4+i)/unit;
+      y = Math.sin(x);
+      context.lineTo(i, unit*y+screen.height/2);
+  }
+}
 
  var canvas = document.querySelector('canvas');
     canvas.width = screen.width;
     canvas.height = screen.height;
   var ctx = canvas.getContext('2d');
 
-function dots() {
+function sin() {
   ctx.fillStyle = "#000";
   ctx.fillRect(0,0,canvas.width, canvas.height);
 
-  var frequencies = adjustFreqData(8);
+  var frequencies = adjustFreqData(128);
   var newData = frequencies.newFreqs;
 
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
-    var transparency = d/200;
 
-    ctx.strokeStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
-    ctx.fillStyle = "hsla("+Math.round( i*30 )+",50%,80%,"+transparency+")";
     ctx.globalCompositeOperation = "hard-light";
-    ctx.beginPath();
-    ctx.lineWidth = 15;
-    ctx.arc(screen.centerX, screen.centerY, i*64, 0, Math.PI*2);
+
+    // ctx.beginPath();
+    // drawSin(ctx, d, (i%24)*80, (i%14)*50);
+    drawSin(audioApi.currentTime, ctx);
+    ctx.strokeStyle = "hsla("+(i*3)+",60%,80%,1)";
+    ctx.fillStyle = "hsla("+(i*3)+",60%,"+d/2+"%,0.4)";
+    ctx.lineWidth = 2;
+    // ctx.arc(x, y, d/(j*5), 0, Math.PI*2);
     ctx.fill();
     ctx.stroke();
 

@@ -80,14 +80,14 @@ function concentric4() {
   for(var i=0;i<newData.length;i++) {
     var d = newData[i];
 
-    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.7)";
+    ctx.strokeStyle = "hsla("+Math.round( i*10+100 )+",50%,80%,0.7)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;
     ctx.arc(screen.centerX, screen.centerY, i*24, 0-(Math.radians(90)), d/32-(Math.radians(90)) );
     ctx.stroke();
 
-    ctx.strokeStyle = "hsla("+Math.round( i*(20+(d/255)) )+",50%,80%,0.7)";
+    ctx.strokeStyle = "hsla("+Math.round( i*10+100 )+",50%,80%,0.7)";
     ctx.globalCompositeOperation = "hard-light";
     ctx.beginPath();
     ctx.lineWidth = 15;

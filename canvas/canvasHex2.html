@@ -98,9 +98,9 @@ function hex() {
     ctx.globalCompositeOperation = "hard-light";
 
     // ctx.beginPath();
-    drawHex(ctx, 50, (i%24)*80, (i%14)*50);
-    ctx.strokeStyle = "hsla("+(i*30)+",60%,80%,1)";
-    ctx.fillStyle = "hsla("+(i*30)+",60%,"+d/2+"%,0.8)";
+    drawHex(ctx, 80, (i%16)*90, (i%14)*80);
+    ctx.strokeStyle = "hsla("+(i*10)+",60%,80%,1)";
+    ctx.fillStyle = "hsla("+(i*10)+",60%,"+d/2+"%,0.8)";
     ctx.lineWidth = 2;
     // ctx.arc(x, y, d/(j*5), 0, Math.PI*2);
     ctx.fill();
