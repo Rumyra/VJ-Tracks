@@ -8,442 +8,786 @@
   --freq6: 1;
   --freq7: 1;
   --freq8: 1;
-  --freq9: 1; }
+  --freq9: 1;
+}
 
 #ohOne {
   margin: 0px;
-  padding: 0px; }
-  #ohOne #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-    #ohOne #screen section {
-      width: 50vw;
-      transform: translate(15vw, 20vh); }
-      #ohOne #screen section:nth-of-type(2) {
-        transform: translate(55vw, 25vh); }
-      #ohOne #screen section:nth-of-type(3) {
-        transform: translate(0vw, 30vh); }
-      #ohOne #screen section:nth-of-type(4) {
-        transform: translate(40vw, 35vh); }
-      #ohOne #screen section:nth-of-type(5) {
-        transform: translate(15vw, 40vh); }
-      #ohOne #screen section:nth-of-type(6) {
-        transform: translate(55vw, 45vh); }
-      #ohOne #screen section:nth-of-type(7) {
-        transform: translate(0vw, 50vh); }
-      #ohOne #screen section:nth-of-type(8) {
-        transform: translate(40vw, 55vh); }
-      #ohOne #screen section div {
-        height: 8px;
-        opacity: calc(0.2*var(--level)); }
-        #ohOne #screen section div:nth-of-type(0) {
-          transform: translateY(0px) rotate(0deg); }
-          #ohOne #screen section div:nth-of-type(0) i {
-            background-color: rgba(214, 92, 92, 0.8);
-            border: 1px solid rgba(214, 92, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 0ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(1) {
-          transform: translateY(-10px) rotate(22.5deg); }
-          #ohOne #screen section div:nth-of-type(1) i {
-            background-color: rgba(214, 184, 92, 0.8);
-            border: 1px solid rgba(214, 184, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 200ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(2) {
-          transform: translateY(-20px) rotate(45deg); }
-          #ohOne #screen section div:nth-of-type(2) i {
-            background-color: rgba(153, 214, 92, 0.8);
-            border: 1px solid rgba(153, 214, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 400ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(3) {
-          transform: translateY(-30px) rotate(67.5deg); }
-          #ohOne #screen section div:nth-of-type(3) i {
-            background-color: rgba(92, 214, 122, 0.8);
-            border: 1px solid rgba(92, 214, 122, 0.9);
-            animation: ohThreeLine 1.6s linear 600ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(4) {
-          transform: translateY(-40px) rotate(90deg); }
-          #ohOne #screen section div:nth-of-type(4) i {
-            background-color: rgba(92, 214, 214, 0.8);
-            border: 1px solid rgba(92, 214, 214, 0.9);
-            animation: ohThreeLine 1.6s linear 800ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(5) {
-          transform: translateY(-50px) rotate(112.5deg); }
-          #ohOne #screen section div:nth-of-type(5) i {
-            background-color: rgba(92, 122, 214, 0.8);
-            border: 1px solid rgba(92, 122, 214, 0.9);
-            animation: ohThreeLine 1.6s linear 1000ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(6) {
-          transform: translateY(-60px) rotate(135deg); }
-          #ohOne #screen section div:nth-of-type(6) i {
-            background-color: rgba(153, 92, 214, 0.8);
-            border: 1px solid rgba(153, 92, 214, 0.9);
-            animation: ohThreeLine 1.6s linear 1200ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(7) {
-          transform: translateY(-70px) rotate(157.5deg); }
-          #ohOne #screen section div:nth-of-type(7) i {
-            background-color: rgba(214, 92, 184, 0.8);
-            border: 1px solid rgba(214, 92, 184, 0.9);
-            animation: ohThreeLine 1.6s linear 1400ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(8) {
-          transform: translateY(-80px) rotate(180deg); }
-          #ohOne #screen section div:nth-of-type(8) i {
-            background-color: rgba(214, 92, 92, 0.8);
-            border: 1px solid rgba(214, 92, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 1600ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(9) {
-          transform: translateY(-90px) rotate(202.5deg); }
-          #ohOne #screen section div:nth-of-type(9) i {
-            background-color: rgba(214, 184, 92, 0.8);
-            border: 1px solid rgba(214, 184, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 1800ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(10) {
-          transform: translateY(-100px) rotate(225deg); }
-          #ohOne #screen section div:nth-of-type(10) i {
-            background-color: rgba(153, 214, 92, 0.8);
-            border: 1px solid rgba(153, 214, 92, 0.9);
-            animation: ohThreeLine 1.6s linear 2000ms alternate infinite; }
-        #ohOne #screen section div:nth-of-type(11) {
-          transform: translateY(-110px) rotate(247.5deg); }
-          #ohOne #screen section div:nth-of-type(11) i {
-            background-color: rgba(92, 214, 122, 0.8);
-            border: 1px solid rgba(92, 214, 122, 0.9);
-            animation: ohThreeLine 1.6s linear 2200ms alternate infinite; }
-      #ohOne #screen section i {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%; }
+  padding: 0px;
+}
+
+#ohOne #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohOne #screen section {
+  width: 50vw;
+  -webkit-transform: translate(15vw, 20vh);
+          transform: translate(15vw, 20vh);
+}
+
+#ohOne #screen section:nth-of-type(2) {
+  -webkit-transform: translate(55vw, 25vh);
+          transform: translate(55vw, 25vh);
+}
+
+#ohOne #screen section:nth-of-type(3) {
+  -webkit-transform: translate(0vw, 30vh);
+          transform: translate(0vw, 30vh);
+}
+
+#ohOne #screen section:nth-of-type(4) {
+  -webkit-transform: translate(40vw, 35vh);
+          transform: translate(40vw, 35vh);
+}
+
+#ohOne #screen section:nth-of-type(5) {
+  -webkit-transform: translate(15vw, 40vh);
+          transform: translate(15vw, 40vh);
+}
+
+#ohOne #screen section:nth-of-type(6) {
+  -webkit-transform: translate(55vw, 45vh);
+          transform: translate(55vw, 45vh);
+}
+
+#ohOne #screen section:nth-of-type(7) {
+  -webkit-transform: translate(0vw, 50vh);
+          transform: translate(0vw, 50vh);
+}
+
+#ohOne #screen section:nth-of-type(8) {
+  -webkit-transform: translate(40vw, 55vh);
+          transform: translate(40vw, 55vh);
+}
+
+#ohOne #screen section div {
+  height: 8px;
+  opacity: calc(0.2*var(--level));
+}
+
+#ohOne #screen section div:nth-of-type(0) {
+  -webkit-transform: translateY(0px) rotate(0deg);
+          transform: translateY(0px) rotate(0deg);
+}
+
+#ohOne #screen section div:nth-of-type(0) i {
+  background-color: rgba(214, 92, 92, 0.8);
+  border: 1px solid rgba(214, 92, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 0ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 0ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(1) {
+  -webkit-transform: translateY(-10px) rotate(22.5deg);
+          transform: translateY(-10px) rotate(22.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(1) i {
+  background-color: rgba(214, 184, 92, 0.8);
+  border: 1px solid rgba(214, 184, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 200ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 200ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(2) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+          transform: translateY(-20px) rotate(45deg);
+}
+
+#ohOne #screen section div:nth-of-type(2) i {
+  background-color: rgba(153, 214, 92, 0.8);
+  border: 1px solid rgba(153, 214, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 400ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 400ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(3) {
+  -webkit-transform: translateY(-30px) rotate(67.5deg);
+          transform: translateY(-30px) rotate(67.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(3) i {
+  background-color: rgba(92, 214, 122, 0.8);
+  border: 1px solid rgba(92, 214, 122, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 600ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 600ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(4) {
+  -webkit-transform: translateY(-40px) rotate(90deg);
+          transform: translateY(-40px) rotate(90deg);
+}
+
+#ohOne #screen section div:nth-of-type(4) i {
+  background-color: rgba(92, 214, 214, 0.8);
+  border: 1px solid rgba(92, 214, 214, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 800ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 800ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(5) {
+  -webkit-transform: translateY(-50px) rotate(112.5deg);
+          transform: translateY(-50px) rotate(112.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(5) i {
+  background-color: rgba(92, 122, 214, 0.8);
+  border: 1px solid rgba(92, 122, 214, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 1000ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 1000ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(6) {
+  -webkit-transform: translateY(-60px) rotate(135deg);
+          transform: translateY(-60px) rotate(135deg);
+}
+
+#ohOne #screen section div:nth-of-type(6) i {
+  background-color: rgba(153, 92, 214, 0.8);
+  border: 1px solid rgba(153, 92, 214, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 1200ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 1200ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(7) {
+  -webkit-transform: translateY(-70px) rotate(157.5deg);
+          transform: translateY(-70px) rotate(157.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(7) i {
+  background-color: rgba(214, 92, 184, 0.8);
+  border: 1px solid rgba(214, 92, 184, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 1400ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 1400ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(8) {
+  -webkit-transform: translateY(-80px) rotate(180deg);
+          transform: translateY(-80px) rotate(180deg);
+}
+
+#ohOne #screen section div:nth-of-type(8) i {
+  background-color: rgba(214, 92, 92, 0.8);
+  border: 1px solid rgba(214, 92, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 1600ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 1600ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(9) {
+  -webkit-transform: translateY(-90px) rotate(202.5deg);
+          transform: translateY(-90px) rotate(202.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(9) i {
+  background-color: rgba(214, 184, 92, 0.8);
+  border: 1px solid rgba(214, 184, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 1800ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 1800ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(10) {
+  -webkit-transform: translateY(-100px) rotate(225deg);
+          transform: translateY(-100px) rotate(225deg);
+}
+
+#ohOne #screen section div:nth-of-type(10) i {
+  background-color: rgba(153, 214, 92, 0.8);
+  border: 1px solid rgba(153, 214, 92, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 2000ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 2000ms alternate infinite;
+}
+
+#ohOne #screen section div:nth-of-type(11) {
+  -webkit-transform: translateY(-110px) rotate(247.5deg);
+          transform: translateY(-110px) rotate(247.5deg);
+}
+
+#ohOne #screen section div:nth-of-type(11) i {
+  background-color: rgba(92, 214, 122, 0.8);
+  border: 1px solid rgba(92, 214, 122, 0.9);
+  -webkit-animation: ohThreeLine 1.6s linear 2200ms alternate infinite;
+          animation: ohThreeLine 1.6s linear 2200ms alternate infinite;
+}
+
+#ohOne #screen section i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes ohThreeLine {
+  0% {
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
+  100% {
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+  }
+}
 
 @keyframes ohThreeLine {
   0% {
-    transform: translateX(0vw); }
+    -webkit-transform: translateX(0vw);
+            transform: translateX(0vw);
+  }
   100% {
-    transform: translateX(50vw); } }
+    -webkit-transform: translateX(50vw);
+            transform: translateX(50vw);
+  }
+}
+
 #ohTwo {
   margin: 0px;
-  padding: 0px; }
-  #ohTwo #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-    #ohTwo #screen section {
-      height: 30vh;
-      width: 100vw;
-      position: absolute;
-      left: 0px;
-      bottom: 0px; }
-      #ohTwo #screen section div {
-        height: 30vh;
-        width: 100vw;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        border-bottom: 2px solid hsla(calc(10*var(--midFreqTwo)), 60%, 60%, 0.7); }
-        #ohTwo #screen section div span {
-          display: block;
-          width: calc(10vw*var(--lowFreqOne));
-          height: 20vh;
-          border-radius: 7vw 7vw 0 0;
-          background-color: rgba(214, 92, 214, 0.7);
-          border: 2px solid black;
-          border-bottom-width: 0px; }
-          #ohTwo #screen section div span:nth-of-type(1) {
-            display: block;
-            width: calc(30vw*var(--lowFreqOne));
-            height: calc(20vh*var(--lowFreqThree));
-            border-radius: calc(20vw*var(--lowFreqThree)) calc(20vw*var(--lowFreqOne)) 0 0;
-            background-color: hsla(calc(10*var(--lowFreqTwo)), 60%, 60%, 0.7); }
-          #ohTwo #screen section div span:nth-of-type(2) {
-            display: block;
-            width: calc(30vw*var(--midFreqOne));
-            height: calc(20vh*var(--midFreqThree));
-            border-radius: calc(20vw*var(--midFreqThree)) calc(20vw*var(--midFreqOne)) 0 0;
-            background-color: hsla(calc(10*var(--midFreqTwo)), 60%, 60%, 0.7); }
-          #ohTwo #screen section div span:nth-of-type(3) {
-            display: block;
-            width: calc(30vw*var(--highFreqOne));
-            height: calc(20vh*var(--highFreqThree));
-            border-radius: calc(20vw*var(--highFreqThree)) calc(20vw*var(--highFreqOne)) 0 0;
-            background-color: hsla(calc(10*var(--highFreqTwo)), 60%, 60%, 0.7); }
+  padding: 0px;
+}
+
+#ohTwo #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohTwo #screen section {
+  height: 30vh;
+  width: 100vw;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+}
+
+#ohTwo #screen section div {
+  height: 30vh;
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  border-bottom: 2px solid hsla(calc(10*var(--midFreqTwo)), 60%, 60%, 0.7);
+}
+
+#ohTwo #screen section div span {
+  display: block;
+  width: calc(10vw*var(--lowFreqOne));
+  height: 20vh;
+  border-radius: 7vw 7vw 0 0;
+  background-color: rgba(214, 92, 214, 0.7);
+  border: 2px solid black;
+  border-bottom-width: 0px;
+}
+
+#ohTwo #screen section div span:nth-of-type(1) {
+  display: block;
+  width: calc(30vw*var(--lowFreqOne));
+  height: calc(20vh*var(--lowFreqThree));
+  border-radius: calc(20vw*var(--lowFreqThree)) calc(20vw*var(--lowFreqOne)) 0 0;
+  background-color: hsla(calc(10*var(--lowFreqTwo)), 60%, 60%, 0.7);
+}
+
+#ohTwo #screen section div span:nth-of-type(2) {
+  display: block;
+  width: calc(30vw*var(--midFreqOne));
+  height: calc(20vh*var(--midFreqThree));
+  border-radius: calc(20vw*var(--midFreqThree)) calc(20vw*var(--midFreqOne)) 0 0;
+  background-color: hsla(calc(10*var(--midFreqTwo)), 60%, 60%, 0.7);
+}
+
+#ohTwo #screen section div span:nth-of-type(3) {
+  display: block;
+  width: calc(30vw*var(--highFreqOne));
+  height: calc(20vh*var(--highFreqThree));
+  border-radius: calc(20vw*var(--highFreqThree)) calc(20vw*var(--highFreqOne)) 0 0;
+  background-color: hsla(calc(10*var(--highFreqTwo)), 60%, 60%, 0.7);
+}
+
+@-webkit-keyframes ohTwoRise {
+  0% {
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
+  100% {
+    -webkit-transform: translateY(-100vh);
+            transform: translateY(-100vh);
+  }
+}
 
 @keyframes ohTwoRise {
   0% {
-    transform: translateY(0vh); }
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
   100% {
-    transform: translateY(-100vh); } }
+    -webkit-transform: translateY(-100vh);
+            transform: translateY(-100vh);
+  }
+}
+
 #ohFour {
   margin: 0px;
-  padding: 0px; }
-  #ohFour #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-    #ohFour #screen section {
-      margin: 0px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      will-change: mix-blend-mode; }
-      #ohFour #screen section i {
-        display: inline-block;
-        border-radius: 50%;
-        will-change: width, height; }
-      #ohFour #screen section:nth-of-type(1) {
-        width: 8vw;
-        margin-left: -4vw; }
-        #ohFour #screen section:nth-of-type(1) i {
-          width: calc(5vw*var(--freq1));
-          height: calc(5vw*var(--freq1));
-          background-color: rgba(214, 173, 92, 0.7);
-          border: 1px solid rgba(214, 173, 92, 0.9); }
-      #ohFour #screen section:nth-of-type(2) {
-        width: 16vw;
-        margin-left: -8vw; }
-        #ohFour #screen section:nth-of-type(2) i {
-          width: calc(10vw*var(--freq2));
-          height: calc(10vw*var(--freq2));
-          background-color: rgba(173, 214, 92, 0.7);
-          border: 1px solid rgba(173, 214, 92, 0.9); }
-      #ohFour #screen section:nth-of-type(3) {
-        width: 24vw;
-        margin-left: -12vw; }
-        #ohFour #screen section:nth-of-type(3) i {
-          width: calc(15vw*var(--freq3));
-          height: calc(15vw*var(--freq3));
-          background-color: rgba(92, 214, 92, 0.7);
-          border: 1px solid rgba(92, 214, 92, 0.9); }
-      #ohFour #screen section:nth-of-type(4) {
-        width: 32vw;
-        margin-left: -16vw; }
-        #ohFour #screen section:nth-of-type(4) i {
-          width: calc(20vw*var(--freq4));
-          height: calc(20vw*var(--freq4));
-          background-color: rgba(92, 214, 173, 0.7);
-          border: 1px solid rgba(92, 214, 173, 0.9); }
-      #ohFour #screen section:nth-of-type(5) {
-        width: 40vw;
-        margin-left: -20vw; }
-        #ohFour #screen section:nth-of-type(5) i {
-          width: calc(25vw*var(--freq5));
-          height: calc(25vw*var(--freq5));
-          background-color: rgba(92, 173, 214, 0.7);
-          border: 1px solid rgba(92, 173, 214, 0.9); }
-      #ohFour #screen section:nth-of-type(6) {
-        width: 48vw;
-        margin-left: -24vw; }
-        #ohFour #screen section:nth-of-type(6) i {
-          width: calc(30vw*var(--freq6));
-          height: calc(30vw*var(--freq6));
-          background-color: rgba(92, 92, 214, 0.7);
-          border: 1px solid rgba(92, 92, 214, 0.9); }
-      #ohFour #screen section:nth-of-type(7) {
-        width: 56vw;
-        margin-left: -28vw; }
-        #ohFour #screen section:nth-of-type(7) i {
-          width: calc(35vw*var(--freq7));
-          height: calc(35vw*var(--freq7));
-          background-color: rgba(173, 92, 214, 0.7);
-          border: 1px solid rgba(173, 92, 214, 0.9); }
-      #ohFour #screen section:nth-of-type(8) {
-        width: 64vw;
-        margin-left: -32vw; }
-        #ohFour #screen section:nth-of-type(8) i {
-          width: calc(40vw*var(--freq8));
-          height: calc(40vw*var(--freq8));
-          background-color: rgba(214, 92, 173, 0.7);
-          border: 1px solid rgba(214, 92, 173, 0.9); }
-      #ohFour #screen section:nth-of-type(9) {
-        width: 72vw;
-        margin-left: -36vw; }
-        #ohFour #screen section:nth-of-type(9) i {
-          width: calc(45vw*var(--freq9));
-          height: calc(45vw*var(--freq9));
-          background-color: rgba(214, 92, 92, 0.7);
-          border: 1px solid rgba(214, 92, 92, 0.9); }
-      #ohFour #screen section div {
-        height: 4vw; }
-        #ohFour #screen section div:nth-of-type(1) {
-          transform: translateY(-4vw) rotate(30deg); }
-        #ohFour #screen section div:nth-of-type(2) {
-          transform: translateY(-8vw) rotate(60deg); }
-        #ohFour #screen section div:nth-of-type(3) {
-          transform: translateY(-12vw) rotate(90deg); }
-        #ohFour #screen section div:nth-of-type(4) {
-          transform: translateY(-16vw) rotate(120deg); }
-        #ohFour #screen section div:nth-of-type(5) {
-          transform: translateY(-20vw) rotate(150deg); }
-        #ohFour #screen section div:nth-of-type(6) {
-          transform: translateY(-24vw) rotate(180deg); }
-        #ohFour #screen section div:nth-of-type(7) {
-          transform: translateY(-28vw) rotate(210deg); }
-        #ohFour #screen section div:nth-of-type(8) {
-          transform: translateY(-32vw) rotate(240deg); }
-        #ohFour #screen section div:nth-of-type(9) {
-          transform: translateY(-36vw) rotate(270deg); }
-        #ohFour #screen section div:nth-of-type(10) {
-          transform: translateY(-40vw) rotate(300deg); }
-        #ohFour #screen section div:nth-of-type(11) {
-          transform: translateY(-44vw) rotate(330deg); }
-        #ohFour #screen section div:nth-of-type(12) {
-          transform: translateY(-48vw) rotate(360deg); }
+  padding: 0px;
+}
+
+#ohFour #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohFour #screen section {
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  will-change: mix-blend-mode;
+}
+
+#ohFour #screen section i {
+  display: inline-block;
+  border-radius: 50%;
+  will-change: width, height;
+}
 
 #ohFour #screen section:nth-of-type(1) {
-  mix-blend-mode: screen; }
+  width: 8vw;
+  margin-left: -4vw;
+}
+
+#ohFour #screen section:nth-of-type(1) i {
+  width: calc(5vw*var(--freq1));
+  height: calc(5vw*var(--freq1));
+  background-color: rgba(214, 173, 92, 0.7);
+  border: 1px solid rgba(214, 173, 92, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(2) {
-  mix-blend-mode: luminosity; }
+  width: 16vw;
+  margin-left: -8vw;
+}
+
+#ohFour #screen section:nth-of-type(2) i {
+  width: calc(10vw*var(--freq2));
+  height: calc(10vw*var(--freq2));
+  background-color: rgba(173, 214, 92, 0.7);
+  border: 1px solid rgba(173, 214, 92, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(3) {
-  mix-blend-mode: difference; }
+  width: 24vw;
+  margin-left: -12vw;
+}
+
+#ohFour #screen section:nth-of-type(3) i {
+  width: calc(15vw*var(--freq3));
+  height: calc(15vw*var(--freq3));
+  background-color: rgba(92, 214, 92, 0.7);
+  border: 1px solid rgba(92, 214, 92, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(4) {
-  mix-blend-mode: color-burn; }
+  width: 32vw;
+  margin-left: -16vw;
+}
+
+#ohFour #screen section:nth-of-type(4) i {
+  width: calc(20vw*var(--freq4));
+  height: calc(20vw*var(--freq4));
+  background-color: rgba(92, 214, 173, 0.7);
+  border: 1px solid rgba(92, 214, 173, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(5) {
-  mix-blend-mode: hard-light; }
+  width: 40vw;
+  margin-left: -20vw;
+}
+
+#ohFour #screen section:nth-of-type(5) i {
+  width: calc(25vw*var(--freq5));
+  height: calc(25vw*var(--freq5));
+  background-color: rgba(92, 173, 214, 0.7);
+  border: 1px solid rgba(92, 173, 214, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(6) {
-  mix-blend-mode: difference; }
+  width: 48vw;
+  margin-left: -24vw;
+}
+
+#ohFour #screen section:nth-of-type(6) i {
+  width: calc(30vw*var(--freq6));
+  height: calc(30vw*var(--freq6));
+  background-color: rgba(92, 92, 214, 0.7);
+  border: 1px solid rgba(92, 92, 214, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(7) {
-  mix-blend-mode: hue; }
+  width: 56vw;
+  margin-left: -28vw;
+}
+
+#ohFour #screen section:nth-of-type(7) i {
+  width: calc(35vw*var(--freq7));
+  height: calc(35vw*var(--freq7));
+  background-color: rgba(173, 92, 214, 0.7);
+  border: 1px solid rgba(173, 92, 214, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(8) {
-  mix-blend-mode: hard-light; }
+  width: 64vw;
+  margin-left: -32vw;
+}
+
+#ohFour #screen section:nth-of-type(8) i {
+  width: calc(40vw*var(--freq8));
+  height: calc(40vw*var(--freq8));
+  background-color: rgba(214, 92, 173, 0.7);
+  border: 1px solid rgba(214, 92, 173, 0.9);
+}
 
 #ohFour #screen section:nth-of-type(9) {
-  mix-blend-mode: luminosity; }
+  width: 72vw;
+  margin-left: -36vw;
+}
+
+#ohFour #screen section:nth-of-type(9) i {
+  width: calc(45vw*var(--freq9));
+  height: calc(45vw*var(--freq9));
+  background-color: rgba(214, 92, 92, 0.7);
+  border: 1px solid rgba(214, 92, 92, 0.9);
+}
+
+#ohFour #screen section div {
+  height: 4vw;
+}
+
+#ohFour #screen section div:nth-of-type(1) {
+  -webkit-transform: translateY(-4vw) rotate(30deg);
+          transform: translateY(-4vw) rotate(30deg);
+}
+
+#ohFour #screen section div:nth-of-type(2) {
+  -webkit-transform: translateY(-8vw) rotate(60deg);
+          transform: translateY(-8vw) rotate(60deg);
+}
+
+#ohFour #screen section div:nth-of-type(3) {
+  -webkit-transform: translateY(-12vw) rotate(90deg);
+          transform: translateY(-12vw) rotate(90deg);
+}
+
+#ohFour #screen section div:nth-of-type(4) {
+  -webkit-transform: translateY(-16vw) rotate(120deg);
+          transform: translateY(-16vw) rotate(120deg);
+}
+
+#ohFour #screen section div:nth-of-type(5) {
+  -webkit-transform: translateY(-20vw) rotate(150deg);
+          transform: translateY(-20vw) rotate(150deg);
+}
+
+#ohFour #screen section div:nth-of-type(6) {
+  -webkit-transform: translateY(-24vw) rotate(180deg);
+          transform: translateY(-24vw) rotate(180deg);
+}
+
+#ohFour #screen section div:nth-of-type(7) {
+  -webkit-transform: translateY(-28vw) rotate(210deg);
+          transform: translateY(-28vw) rotate(210deg);
+}
+
+#ohFour #screen section div:nth-of-type(8) {
+  -webkit-transform: translateY(-32vw) rotate(240deg);
+          transform: translateY(-32vw) rotate(240deg);
+}
+
+#ohFour #screen section div:nth-of-type(9) {
+  -webkit-transform: translateY(-36vw) rotate(270deg);
+          transform: translateY(-36vw) rotate(270deg);
+}
+
+#ohFour #screen section div:nth-of-type(10) {
+  -webkit-transform: translateY(-40vw) rotate(300deg);
+          transform: translateY(-40vw) rotate(300deg);
+}
+
+#ohFour #screen section div:nth-of-type(11) {
+  -webkit-transform: translateY(-44vw) rotate(330deg);
+          transform: translateY(-44vw) rotate(330deg);
+}
+
+#ohFour #screen section div:nth-of-type(12) {
+  -webkit-transform: translateY(-48vw) rotate(360deg);
+          transform: translateY(-48vw) rotate(360deg);
+}
+
+@-webkit-keyframes ohFourRotate {
+  0% {
+  }
+}
+
+@keyframes ohFourRotate {
+  0% {
+  }
+}
+
+#ohFour #screen section:nth-of-type(1) {
+  mix-blend-mode: screen;
+}
+
+#ohFour #screen section:nth-of-type(2) {
+  mix-blend-mode: luminosity;
+}
+
+#ohFour #screen section:nth-of-type(3) {
+  mix-blend-mode: difference;
+}
+
+#ohFour #screen section:nth-of-type(4) {
+  mix-blend-mode: color-burn;
+}
+
+#ohFour #screen section:nth-of-type(5) {
+  mix-blend-mode: hard-light;
+}
+
+#ohFour #screen section:nth-of-type(6) {
+  mix-blend-mode: difference;
+}
+
+#ohFour #screen section:nth-of-type(7) {
+  mix-blend-mode: hue;
+}
+
+#ohFour #screen section:nth-of-type(8) {
+  mix-blend-mode: hard-light;
+}
+
+#ohFour #screen section:nth-of-type(9) {
+  mix-blend-mode: luminosity;
+}
 
 #ohFive {
   margin: 0px;
-  padding: 0px; }
-  #ohFive #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-  #ohFive #screen section div {
-    height: 20px;
-    opacity: var(--level); }
-    #ohFive #screen section div:nth-of-type(1) {
-      width: 50px;
-      background-color: rgba(214, 153, 92, 0.7);
-      border: 1px solid rgba(214, 153, 92, 0.9);
-      animation: moveDivs 400ms linear 200ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(2) {
-      width: 100px;
-      background-color: rgba(214, 214, 92, 0.7);
-      border: 1px solid rgba(214, 214, 92, 0.9);
-      animation: moveDivs 800ms linear 400ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(3) {
-      width: 150px;
-      background-color: rgba(153, 214, 92, 0.7);
-      border: 1px solid rgba(153, 214, 92, 0.9);
-      animation: moveDivs 1200ms linear 600ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(4) {
-      width: 200px;
-      background-color: rgba(92, 214, 92, 0.7);
-      border: 1px solid rgba(92, 214, 92, 0.9);
-      animation: moveDivs 1600ms linear 800ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(5) {
-      width: 250px;
-      background-color: rgba(92, 214, 153, 0.7);
-      border: 1px solid rgba(92, 214, 153, 0.9);
-      animation: moveDivs 2000ms linear 1000ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(6) {
-      width: 300px;
-      background-color: rgba(92, 214, 214, 0.7);
-      border: 1px solid rgba(92, 214, 214, 0.9);
-      animation: moveDivs 2400ms linear 1200ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(7) {
-      width: 350px;
-      background-color: rgba(92, 153, 214, 0.7);
-      border: 1px solid rgba(92, 153, 214, 0.9);
-      animation: moveDivs 2800ms linear 1400ms alternate infinite; }
-    #ohFive #screen section div:nth-of-type(8) {
-      width: 400px;
-      background-color: rgba(92, 92, 214, 0.7);
-      border: 1px solid rgba(92, 92, 214, 0.9);
-      animation: moveDivs 3200ms linear 1600ms alternate infinite; }
+  padding: 0px;
+}
+
+#ohFive #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohFive #screen section div {
+  height: 20px;
+  opacity: var(--level);
+}
+
+#ohFive #screen section div:nth-of-type(1) {
+  width: 50px;
+  background-color: rgba(214, 153, 92, 0.7);
+  border: 1px solid rgba(214, 153, 92, 0.9);
+  -webkit-animation: moveDivs 400ms linear 200ms alternate infinite;
+          animation: moveDivs 400ms linear 200ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(2) {
+  width: 100px;
+  background-color: rgba(214, 214, 92, 0.7);
+  border: 1px solid rgba(214, 214, 92, 0.9);
+  -webkit-animation: moveDivs 800ms linear 400ms alternate infinite;
+          animation: moveDivs 800ms linear 400ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(3) {
+  width: 150px;
+  background-color: rgba(153, 214, 92, 0.7);
+  border: 1px solid rgba(153, 214, 92, 0.9);
+  -webkit-animation: moveDivs 1200ms linear 600ms alternate infinite;
+          animation: moveDivs 1200ms linear 600ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(4) {
+  width: 200px;
+  background-color: rgba(92, 214, 92, 0.7);
+  border: 1px solid rgba(92, 214, 92, 0.9);
+  -webkit-animation: moveDivs 1600ms linear 800ms alternate infinite;
+          animation: moveDivs 1600ms linear 800ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(5) {
+  width: 250px;
+  background-color: rgba(92, 214, 153, 0.7);
+  border: 1px solid rgba(92, 214, 153, 0.9);
+  -webkit-animation: moveDivs 2000ms linear 1000ms alternate infinite;
+          animation: moveDivs 2000ms linear 1000ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(6) {
+  width: 300px;
+  background-color: rgba(92, 214, 214, 0.7);
+  border: 1px solid rgba(92, 214, 214, 0.9);
+  -webkit-animation: moveDivs 2400ms linear 1200ms alternate infinite;
+          animation: moveDivs 2400ms linear 1200ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(7) {
+  width: 350px;
+  background-color: rgba(92, 153, 214, 0.7);
+  border: 1px solid rgba(92, 153, 214, 0.9);
+  -webkit-animation: moveDivs 2800ms linear 1400ms alternate infinite;
+          animation: moveDivs 2800ms linear 1400ms alternate infinite;
+}
+
+#ohFive #screen section div:nth-of-type(8) {
+  width: 400px;
+  background-color: rgba(92, 92, 214, 0.7);
+  border: 1px solid rgba(92, 92, 214, 0.9);
+  -webkit-animation: moveDivs 3200ms linear 1600ms alternate infinite;
+          animation: moveDivs 3200ms linear 1600ms alternate infinite;
+}
 
 #ohSix {
   margin: 0px;
-  padding: 0px; }
-  #ohSix #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-  #ohSix #screen section div {
-    height: 20px; }
-    #ohSix #screen section div:nth-of-type(1) {
-      width: calc(300px*var(--freq1) );
-      background-color: rgba(92, 214, 92, 0.7);
-      border: 1px solid rgba(92, 214, 92, 0.9);
-      animation: moveDivs 400ms linear 200ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(2) {
-      width: calc(300px*var(--freq2) );
-      background-color: rgba(92, 214, 153, 0.7);
-      border: 1px solid rgba(92, 214, 153, 0.9);
-      animation: moveDivs 800ms linear 400ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(3) {
-      width: calc(300px*var(--freq3) );
-      background-color: rgba(92, 214, 214, 0.7);
-      border: 1px solid rgba(92, 214, 214, 0.9);
-      animation: moveDivs 1200ms linear 600ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(4) {
-      width: calc(300px*var(--freq4) );
-      background-color: rgba(92, 153, 214, 0.7);
-      border: 1px solid rgba(92, 153, 214, 0.9);
-      animation: moveDivs 1600ms linear 800ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(5) {
-      width: calc(300px*var(--freq5) );
-      background-color: rgba(92, 92, 214, 0.7);
-      border: 1px solid rgba(92, 92, 214, 0.9);
-      animation: moveDivs 2000ms linear 1000ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(6) {
-      width: calc(300px*var(--freq6) );
-      background-color: rgba(153, 92, 214, 0.7);
-      border: 1px solid rgba(153, 92, 214, 0.9);
-      animation: moveDivs 2400ms linear 1200ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(7) {
-      width: calc(300px*var(--freq7) );
-      background-color: rgba(214, 92, 214, 0.7);
-      border: 1px solid rgba(214, 92, 214, 0.9);
-      animation: moveDivs 2800ms linear 1400ms alternate infinite; }
-    #ohSix #screen section div:nth-of-type(8) {
-      width: calc(300px*var(--freq8) );
-      background-color: rgba(214, 92, 153, 0.7);
-      border: 1px solid rgba(214, 92, 153, 0.9);
-      animation: moveDivs 3200ms linear 1600ms alternate infinite; }
+  padding: 0px;
+}
+
+#ohSix #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohSix #screen section div {
+  height: 20px;
+}
+
+#ohSix #screen section div:nth-of-type(1) {
+  width: calc(300px*var(--freq1));
+  background-color: rgba(92, 214, 92, 0.7);
+  border: 1px solid rgba(92, 214, 92, 0.9);
+  -webkit-animation: moveDivs 400ms linear 200ms alternate infinite;
+          animation: moveDivs 400ms linear 200ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(2) {
+  width: calc(300px*var(--freq2));
+  background-color: rgba(92, 214, 153, 0.7);
+  border: 1px solid rgba(92, 214, 153, 0.9);
+  -webkit-animation: moveDivs 800ms linear 400ms alternate infinite;
+          animation: moveDivs 800ms linear 400ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(3) {
+  width: calc(300px*var(--freq3));
+  background-color: rgba(92, 214, 214, 0.7);
+  border: 1px solid rgba(92, 214, 214, 0.9);
+  -webkit-animation: moveDivs 1200ms linear 600ms alternate infinite;
+          animation: moveDivs 1200ms linear 600ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(4) {
+  width: calc(300px*var(--freq4));
+  background-color: rgba(92, 153, 214, 0.7);
+  border: 1px solid rgba(92, 153, 214, 0.9);
+  -webkit-animation: moveDivs 1600ms linear 800ms alternate infinite;
+          animation: moveDivs 1600ms linear 800ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(5) {
+  width: calc(300px*var(--freq5));
+  background-color: rgba(92, 92, 214, 0.7);
+  border: 1px solid rgba(92, 92, 214, 0.9);
+  -webkit-animation: moveDivs 2000ms linear 1000ms alternate infinite;
+          animation: moveDivs 2000ms linear 1000ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(6) {
+  width: calc(300px*var(--freq6));
+  background-color: rgba(153, 92, 214, 0.7);
+  border: 1px solid rgba(153, 92, 214, 0.9);
+  -webkit-animation: moveDivs 2400ms linear 1200ms alternate infinite;
+          animation: moveDivs 2400ms linear 1200ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(7) {
+  width: calc(300px*var(--freq7));
+  background-color: rgba(214, 92, 214, 0.7);
+  border: 1px solid rgba(214, 92, 214, 0.9);
+  -webkit-animation: moveDivs 2800ms linear 1400ms alternate infinite;
+          animation: moveDivs 2800ms linear 1400ms alternate infinite;
+}
+
+#ohSix #screen section div:nth-of-type(8) {
+  width: calc(300px*var(--freq8));
+  background-color: rgba(214, 92, 153, 0.7);
+  border: 1px solid rgba(214, 92, 153, 0.9);
+  -webkit-animation: moveDivs 3200ms linear 1600ms alternate infinite;
+          animation: moveDivs 3200ms linear 1600ms alternate infinite;
+}
+
+@-webkit-keyframes moveDivs {
+  0% {
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
+  100% {
+    -webkit-transform: translateY(50vh);
+            transform: translateY(50vh);
+  }
+}
 
 @keyframes moveDivs {
   0% {
-    transform: translateY(0vh); }
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
   100% {
-    transform: translateY(50vh); } }
+    -webkit-transform: translateY(50vh);
+            transform: translateY(50vh);
+  }
+}
+
 #ohGif {
   margin: 0px;
-  padding: 0px; }
-  #ohGif #screen {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background-color: black; }
-  #ohGif #screen section {
-    overflow: hidden; }
-    #ohGif #screen section img {
-      height: 50vh;
-      width: auto; }
+  padding: 0px;
+}
+
+#ohGif #screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+#ohGif #screen section {
+  overflow: hidden;
+}
+
+#ohGif #screen section img {
+  height: 50vh;
+  width: auto;
+}
 
 @keyframes moveDivs {
   0% {
-    transform: translateY(0vh); }
+    -webkit-transform: translateY(0vh);
+            transform: translateY(0vh);
+  }
   100% {
-    transform: translateY(50vh); } }
-
+    -webkit-transform: translateY(50vh);
+            transform: translateY(50vh);
+  }
+}
 /*# sourceMappingURL=style.css.map */
